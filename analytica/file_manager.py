@@ -87,3 +87,29 @@ def read_saved_rg(filename, rg):
         th0 = np.array(th0).astype(float)
         rg.th = th
         rg.th0 = th0
+
+# read and write weights/labels &
+# cluster output for k_means clusturing model
+
+def write_k_means(file, km):
+    csvwriter = csv.writer(file)
+    for row in km.centroids:
+        csvwriter.writerow(row.tolist())
+    return ContentFile(file.getvalue().encode('utf-8'))
+
+def read_k_means(filename, km):
+    with open(filename, 'r')as file:
+        csvreader = csv.reader(file)
+        c = []
+        for row in csvreader:
+            c.append(row)
+        c = np.array(c).astype(float)
+        km.centroids = c
+
+def write_k_means_output(file, X, y):
+    out = np.append(X.T, y.T, axis=1)
+    csvwriter = csv.writer(file)
+    for row in out:
+        csvwriter.writerow(row.tolist())
+    return ContentFile(file.getvalue().encode('utf-8'))
+

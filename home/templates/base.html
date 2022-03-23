@@ -1,24 +1,32 @@
 {% load static %}
+{% load static tailwind_tags %}
 <!DOCTYPE html>
 <html>
     <head>
         <title>{% block title %}{% endblock %}</title>
         {% block css %}{% endblock %}
-        <link href="{% static "css/base.css" %}" rel="stylesheet">
+        {% tailwind_css %}
     </head>
     <body>
         <div id="header">
             {% if request.user.is_authenticated %}
                 <ul class="menu">
                     <li {% if section == "dashboard" %}class="selected"{% endif %}>
-                        <a href="{% url "dashboard" %}">My dashboard</a>
+                        <a href="{% url "dashboard" %}">Plot</a>
                     </li>
-                    <li {% if section == "images" %}class="selected"{% endif %}>
-                        <a href="#">Images</a>
+
+
+                    <li {% if section == "analytica" %}class="selected"{% endif %}>
+                        <a href={% url 'analytica:analytica_index' %}>Analytica</a>
                     </li>
                     <li {% if section == "people" %}class="selected"{% endif %}>
                         <a href="#">People</a>
                     </li>
+
+                    <li {% if section == "people" %}class="selected"{% endif %}>
+                        <a href="#">something</a>
+                    </li>
+
                 </ul>
             {% endif %}
 

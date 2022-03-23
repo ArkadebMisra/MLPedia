@@ -48,34 +48,34 @@ class KMeansClustur:
         return np.argmin(self.euclidean(x, self.centroids))
 
 #####################test######################
-from sklearn.datasets import make_blobs
+# from sklearn.datasets import make_blobs
 
-centers = [(10, 10), (10, 100), (70, 110), (100, 10), (120, 70)]
-cluster_std = [10, 15, 5, 15, 7]
-# x1, x2, x3, x4, x5
+# centers = [(10, 10), (10, 100), (70, 110), (100, 10), (120, 70)]
+# cluster_std = [10, 15, 5, 15, 7]
+# # x1, x2, x3, x4, x5
 
-X, y = make_blobs(n_samples=300, cluster_std=cluster_std, 
-                                centers=centers, n_features=2, random_state=1)
+# X, y = make_blobs(n_samples=300, cluster_std=cluster_std, 
+#                                 centers=centers, n_features=2, random_state=1)
 
 
 
-k=5
-km = KMeansClustur(k)
-X = X.T
-km.run_k_means(X)
+# k=5
+# km = KMeansClustur(k)
+# X = X.T
+# km.run_k_means(X)
 
-x = np.array([[20], [25]])
+# x = np.array([[20], [25]])
 
-print(km.assign_label(x))
+# print(km.assign_label(x))
 
-def plot_k_means(X, km):
-    c, y = km.centroids, km.assigned_labels
-    plt.figure(facecolor="white")
-    ax = plt.subplot()
-    ax.scatter(X[0:1, :], X[1:2, :], 3, y[0:1, :], cmap='plasma')
-    n = [i for i in range(k)]
-    for i, txt in enumerate(n):
-        ax.annotate(txt, (c[0:1, i:i+1], c[1:2, i:i+1]))
-    plt.show()
+# def plot_k_means(X, km):
+#     c, y = km.centroids, km.assigned_labels
+#     plt.figure(facecolor="white")
+#     ax = plt.subplot()
+#     ax.scatter(X[0:1, :], X[1:2, :], 3, y[0:1, :], cmap='plasma')
+#     n = [i for i in range(k)]
+#     for i, txt in enumerate(n):
+#         ax.annotate(txt, (c[0:1, i:i+1], c[1:2, i:i+1]))
+#     plt.show()
 
-plot_k_means(X, km)
+# plot_k_means(X, km)
