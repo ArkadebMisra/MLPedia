@@ -33,21 +33,18 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'account.apps.AccountConfig',
-    
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
-    #3rd party apps
-    'tailwind',
-    'theme',
-    'django_browser_reload',
+
+    # 3rd party apps
 
 
-    #my_apps
+    # my_apps
     'analytica.apps.AnalyticaConfig',
     'home.apps.HomeConfig',
     'plotter.apps.PlotterConfig',
@@ -149,7 +146,7 @@ LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
 
-#tailwind settings
+# tailwind settings
 TAILWIND_APP_NAME = 'theme'
 
 INTERNAL_IPS = [
