@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <p id="check">none</p>
+    <form action="." method="post">
+      <div class="form_group">
+        {{ form.graph_title.label }} {{ form.graph_title }}
+        <br />
+        <br />
+      </div>
+
+      <div class="form_group">
+        X Axis {{ form.x_axis_label }} {{ form.x_scale }}
+        <br />
+        <br />
+      </div>
+
+      <div class="form_group">
+        Y Axis {{ form.y_axis_label }} {{ form.y_scale }}
+        <br />
+        <br />
+      </div>
+
+      <div class="form_group">
+        {{ form.number_of_lines.label }} {{ form.number_of_lines }}
+        <br />
+        <br />
+      </div>
+
+      <div id="all_lines">
+        <div class="form_group" id="line_1_data">
+          Line 1 data
+          <p>{{ form.x1.label }} {{ form.x1 }}</p>
+          <p>{{ form.y1.label }} {{ form.y1 }}</p>
+          <br />
+          <br />
+        </div>
+        <div class="form_group hidden" id="line_2_data">
+          Line 2 data
+          <p>{{ form.x2.label }} {{ form.x2 }}</p>
+          <p>{{ form.y2.label }} {{ form.y2 }}</p>
+          <br />
+          <br />
+        </div>
+        <div class="form_group hidden" id="line_3_data">
+          Line 3 data
+          <p>{{ form.x3.label }} {{ form.x3 }}</p>
+          <p>{{ form.y3.label }} {{ form.y3 }}</p>
+          <br />
+          <br />
+        </div>
+        <div class="form_group hidden" id="line_4_data">
+          Line 4 data
+          <p>{{ form.x1.label }} {{ form.x1 }}</p>
+          <p>{{ form.y1.label }} {{ form.y1 }}</p>
+          <br />
+          <br />
+        </div>
+        <div class="form_group hidden" id="line_5_data">
+          Line 5 data
+          <p>{{ form.x1.label }} {{ form.x1 }}</p>
+          <p>{{ form.y1.label }} {{ form.y1 }}</p>
+          <br />
+          <br />
+        </div>
+      </div>
+
+      {% csrf_token %}
+      <input type="submit" value="draw" />
+    </form>
+    <script>
+      const resetForm = (value) => {
+        const allLines = document.getElementById("all_lines");
+        for (let i = 0; i < allLines.children.length; i++) {
+          if (i + 1 > value) {
+            allLines.children[i].classList.add("hidden");
+          } else {
+            allLines.children[i].classList.remove("hidden");
+          }
+        }
+      };
+
+      const linesSelector = document.getElementById("id_number_of_lines");
+      linesSelector.onchange = (e) => {
+        resetForm(+e.target.value);
+      };
+    </script>
+  </body>
+</html>
