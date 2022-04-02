@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     #my_apps
     'analytica.apps.AnalyticaConfig',
     'home.apps.HomeConfig',
+    'plotter.apps.PlotterConfig',
 ]
 
 MIDDLEWARE = [
