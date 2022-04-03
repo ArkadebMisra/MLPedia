@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+        <form action="." method="post">
+            <div class="form_group">
+                {{ form.graph_title.label }} {{ form.graph_title }}
+                <br />
+                <br />
+            </div>
+
+            <div class="form_group">
+                {{ form.oreantation.label }} {{ form.oreantation }}
+                <br />
+                <br />
+            </div>
+
+            <div class="form_group">
+                X Axis {{ form.x_axis_label }}
+                <br />
+                <br />
+            </div>
+    
+            <div class="form_group">
+                Y Axis {{ form.y_axis_label }} {{ form.y_scale }}
+                <br />
+                <br />
+            </div>
+    
+            <div class="form_group">
+                {{ form.number_of_bars.label }} {{ form.number_of_bars }}
+                <br />
+                <br />
+            </div>
+
+            <div class="form_group">
+                {{ form.data_labels.label }} {{ form.data_labels }}
+                <br />
+                <br />
+            </div>
+    
+            <div id="data_form_fields">
+                <div class="form_group" id="line_1_data">
+                    bar 1 data
+                    <p>{{ form.bar1_label.label}} {{ form.bar1_label}}</p>
+                    <p>{{ form.bar1_data_values.label }} {{ form.bar1_data_values }}</p>
+                    <br />
+                    <br />
+                </div>
+
+                <div class="form_group hidden" id="line_2_data">
+                    bar 2 data
+                    <p>{{ form.bar2_label.label}} {{ form.bar2_label}}</p>
+                    <p>{{ form.bar2_data_values.label }} {{ form.bar2_data_values }}</p>
+                    <br />
+                    <br />
+                </div>
+
+                <div class="form_group hidden" id="line_3_data">
+                    bar 3 data
+                    <p>{{ form.bar3_label.label}} {{ form.bar3_label}}</p>
+                    <p>{{ form.bar3_data_values.label }} {{ form.bar3_data_values }}</p>
+                    <br />
+                    <br />
+                </div>
+
+                <div class="form_group hidden" id="line_4_data">
+                    bar 4 data
+                    <p>{{ form.bar4_label.label}} {{ form.bar4_label}}</p>
+                    <p>{{ form.bar4_data_values.label }} {{ form.bar4_data_values }}</p>
+                    <br />
+                    <br />
+                </div>
+
+                <div class="form_group hidden" id="line_5_data">
+                    bar 5 data
+                    <p>{{ form.bar5_label.label}} {{ form.bar5_label }}</p>
+                    <p>{{ form.bar5_data_values.label }} {{ form.bar5_data_values }}</p>
+                    <br />
+                    <br />
+                </div>
+
+            </div>
+
+            {% csrf_token %}
+            <input type="submit" value="draw">
+        </form>
+        {% if plot %}
+            <img src="data:image/png;base64, {{ plot|safe }}">
+            <h1><a href="data:image/png;base64, {{ plot|safe }}" download>
+                download </a> </h1>
+        {% endif %}   
+        
+        
+        <script>
+            const resetForm = (value) => {
+                console.log("Works");
+                const allLines = document.getElementById("data_form_fields");
+                for (let i = 0; i < allLines.children.length; i++) {
+                    if (i + 1 > value) {
+                        allLines.children[i].classList.add("hidden");
+                    } else {
+                        allLines.children[i].classList.remove("hidden");
+                    }
+                }
+            };
+    
+            const linesSelector = document.getElementById("id_number_of_bars");
+            console.log(linesSelector);
+            linesSelector.onchange = (e) => {
+                resetForm(+e.target.value);
+            };
+        </script>
+    </body>
+</html>

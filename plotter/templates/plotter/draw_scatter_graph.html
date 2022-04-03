@@ -28,7 +28,7 @@
             </div>
     
             <div class="form_group">
-                {{ form.number_of_lines.label }} {{ form.number_of_lines }}
+                {{ form.number_of_scatters.label }} {{ form.number_of_scatters }}
                 <br />
                 <br />
             </div>
@@ -98,7 +98,7 @@
             }
         };
 
-        const linesSelector = document.getElementById("id_number_of_lines");
+        const linesSelector = document.getElementById("id_number_of_scatters");
         console.log(linesSelector);
         linesSelector.onchange = (e) => {
             resetForm(+e.target.value);

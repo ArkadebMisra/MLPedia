@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body>
+        <form action="." method="post">
+            <div class="form_group">
+                {{ form.graph_title.label }} {{ form.graph_title }}
+                <br />
+                <br />
+            </div>
+    
+            <div class="form_group">
+                {{ form.data_labels.label }} {{ form.data_labels }}
+                <br />
+                <br />
+            </div>
+
+            <div class="form_group">
+                {{ form.data_values.label }} {{ form.data_values }}
+                <br />
+                <br />
+            </div>
+
+            {% csrf_token %}
+            <input type="submit" value="draw">
+        </form>
+        {% if plot %}
+            <img src="data:image/png;base64, {{ plot|safe }}">
+            <h1><a href="data:image/png;base64, {{ plot|safe }}" download>
+                download </a> </h1>
+        {% endif %}    
+    </body>
+</html>
