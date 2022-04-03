@@ -24,7 +24,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('account.urls')),
     path('home/', include(('home.urls','home'), namespace='home')),
-    path('analytica/',include(('analytica.urls','analytica'), namespace='analytica')),   
+    path('analytica/',include(('analytica.urls','analytica'), namespace='analytica')),
+    path('plotter/',include(('plotter.urls','plotter'), namespace='plotter')),   
 ]
 
 if settings.DEBUG:
