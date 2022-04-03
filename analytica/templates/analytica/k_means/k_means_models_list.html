@@ -1,0 +1,13 @@
+{% extends 'base.html'%}
+
+{% block content %}
+
+<a href="{% url 'analytica:k_means_create' %}"><h1>add a new K Means Cluster model</h1></a>
+
+{% for model in models %}
+    <a href="{{ model.get_absolute_url }}">
+        <h1>{{ model.title }}</h1>
+    </a>
+{% endfor %}
+    
+{% endblock %}

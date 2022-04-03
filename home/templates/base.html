@@ -1,0 +1,240 @@
+
+{% load static %}
+
+
+
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://unpkg.com/feather-icons"></script>
+        
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- <link href="/your-path-to-uicons/css/uicons-[your-style].css" rel="stylesheet">  -->
+        <title>{% block title %}{% endblock %}</title>
+        {% block style %}
+            
+        
+        
+        {% endblock %}
+        {% load static tailwind_tags %}
+        {% block css %}
+             
+        {% endblock %}
+        
+    </head>
+    <body>
+        
+        <div id="navbar" class="w-screen  ">
+
+            <div class="bg-slate-100 h-9 relative  ">
+                <div class=" text-2xl text-gray-600 absolute font-semibold left-4">MLPedia</div>
+                <div class="flex h-9 w-1/3 justify-around items-center absolute left-32">
+                    <i class="fa-solid fa-xmark"></i>
+                    <div class=" text-xl text-[#316fa8] font-normal hover:text-indigo-900 cursor-pointer">Home</div>
+                    <div class=" text-xl text-[#316fa8] font-normal hover:text-indigo-900 cursor-pointer">About Us</div>
+                    <div class=" text-xl text-[#316fa8] font-normal hover:text-indigo-900 cursor-pointer">Plot</div>
+                    <div class=" text-xl text-[#316fa8] font-normal hover:text-indigo-900 cursor-pointer">Analytica</div> 
+
+                </div>
+                <div >
+                    <i id="loginMenu" class="fa fa-user fa-lg absolute top-3 right-9 text-gray-600 hover:text-indigo-500 cursor-pointer" aria-hidden="true"></i>
+                    
+                    
+                </div>
+                <div
+                        class=" fixed top-10 -right-80 bg-slate-200
+                        w-80
+                        h-40
+                        z-50
+                        transform
+                        origin-left
+                        transition-all
+                        duration-700
+                        ease-in-out
+                        "
+                        id="bar"
+                    >
+                    <i class="fa-solid fa-xmark-large text-black"></i>
+                    
+                </div>
+
+            </div>
+        </div>
+        <div class=" w-screen h-[700px] bg-gray-500  relative overflow-x-hidden  "  >
+            <img class="h-[700px] w-auto" src="{% static 'img/nn.jpg' %}" alt="">
+            <div class="h-5 w-4/12 lg:w-[600px] bg-[#478ac9] absolute top-[240px] right-1/2 lg:right-[200px] z-10">
+            </div>
+            <div class=" bg-gray-200 h-[500px] w-5/12 absolute top-[200px] right-1/4 lg:right-0 overflow-x-hidden">
+                <div class=" text-3xl lg:text-6xl font-bold absolute top-24 left-12">
+                    MLPEDIA
+                </div>
+                <div class=" text-base lg:text-xl font-serif h-1/2 absolute top-44 left-12 ">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br>
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
+                    ut aliquip ex ea commodo consequat. 
+                    
+
+                </div>
+            </div>
+        </div >
+        <div class="h-auto w-screen flex ">
+
+            <div class="h-[600px] w-1/2 bg-[#478ac9] relative ">
+                <div class=" text-white text-4xl font-semibold top-32 left-1/4 lg:left-48 absolute ">
+                    PLOT
+                </div>
+                <div class="h-[1.5px] w-1/4 bg-white absolute top-52 left-1/4 lg:left-48"></div>
+                <div class="absolute top-64 left-1/4 lg:left-48 font-light text-base lg:text-lg text-white h-1/3 w-7/12">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br>
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                </div>
+                <div>
+                    <button class=" absolute w-2/12 h-9 border border-white border-solid rounded-xl bg-[#316fa8] text-white bottom-20 lg:bottom-32 left-1/4 lg:left-48 text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none ">Learn More</button>
+                </div>
+                
+            </div>
+            <div class="h-[600px] w-1/2 bg-gray-200 relative ">
+                <div>
+                    <img class="h-[350px] w-[500px] drop-shadow-[-10px_-10px_10px_rgba(0,0,0,0.25)] absolute top-1/4 right-2/4" src="{% static 'img/plotting.jpg' %}" alt="">
+                </div>
+                <div class="w-[200px] absolute right-2/4 top-[83%] text-right text-black text-base italic">
+                    Lorem Ipsum
+
+                </div>
+                <div class=" bg-black w-[350px] h-[0.5px] absolute top-[88%] right-2/4 ">
+
+                </div>
+                
+            </div>
+        </div>
+        <div class="h-auto w-screen flex ">
+            <div class="h-[600px] w-7/12 bg-gray-200 relative ">
+                
+              <img class="h-[600px] w-full  absolute top-0 " src="{% static 'img/Analytica.jpg' %}" alt="">
+                
+            </div>
+
+            <div class="h-[600px] w-5/12 bg-[#478ac9] relative ">
+                <div class=" text-white text-4xl font-semibold top-32 right-1/4 lg:right-48 absolute ">
+                    ANALYTICA
+                </div>
+                <div class="h-[1.5px] w-2/4 bg-white absolute top-52 right-1/4 lg:right-48"></div>
+                <div class="absolute top-64 right-1/4 lg:right-48 font-light text-base lg:text-lg text-white h-1/3 w-7/12 text-right">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                </div>
+                <div>
+                    <button class=" absolute w-2/12 h-9 border border-white border-solid rounded-xl bg-[#316fa8] text-white bottom-20 lg:bottom-32 right-1/4 lg:right-48 text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none ">Learn More</button>
+                </div>
+                
+            </div>
+            
+        </div>
+        <div class="h-[800px] w-screen  bg-gray-200 relative ">
+            <div class=" w-1/3 h-full relative ">
+                <div class="text-black text-4xl absolute top-[19%] left-[15%] font-semibold ">
+                    ABOUT <br>
+                    US
+                </div>
+                <div class="h-[1.5px] w-2/4 bg-black absolute top-[36%] left-[15%] "></div>
+                <div class="absolute top-[42%] left-[15%] font-light text-base lg:text-lg text-black h-1/3 w-2/3 text-left">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                </div>
+                <div>
+                    <button class=" absolute w-3/12 h-9 border border-white border-solid rounded-xl bg-[#316fa8] text-white  lg:bottom-[27%]  lg:left-[15%] text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none ">Learn More</button>
+                </div>
+
+            </div>
+            <div class=" h-auto w-1/3 absolute top-[9%] left-[36%]">
+                <img class="h-[450px] w-auto  absolute top-0 drop-shadow-[-8px_-8px_8px_rgba(0,0,0,0.25)] " src="{% static 'img/regression.jpg' %}" alt="">
+            </div>
+            <div  class=" h-auto w-2/4 absolute top-[23%] right-[3%]">
+                <img class="h-[520px] w-[700px]  absolute top-0 drop-shadow-[-10px_-10px_10px_rgba(0,0,0,0.25)] " src="{% static 'img/neural.jpeg' %}" alt="">
+                
+            </div>
+            <div class="w-[200px] h-auto absolute right-[8%]  top-[90%] text-right text-black text-base italic">
+                Lorem Ipsum
+
+            </div>
+            <div class=" bg-black w-[450px] h-[0.5px] absolute right-[8%]  top-[94%]  ">
+            </div>
+
+        </div>
+        <div class=" h-24 w-screen bg-zinc-900 text-gray-500 text-center text-4xl font-semibold flex justify-center items-center ">
+            MLPEDIA
+
+        </div>
+        
+       
+<!--          
+        <div id="header">
+            {% if request.user.is_authenticated %}
+                <ul class="menu">
+                    <li {% if section == "dashboard" %}class="selected"{% endif %}>
+                        <a href="{% url "dashboard" %}">Plot</a>
+                    </li>
+
+
+                    <li {% if section == "analytica" %}class="selected"{% endif %}>
+                        <a href={% url 'analytica:analytica_index' %}>Analytica</a>
+                    </li>
+                    <li {% if section == "people" %}class="selected"{% endif %}>
+                        <a href="#">People</a>
+                    </li>
+
+                    <li {% if section == "people" %}class="selected"{% endif %}>
+                        <a href="#">something</a>
+                    </li>
+
+                </ul>
+            {% endif %}
+
+
+
+
+            <span>
+                {% if request.user.is_authenticated %}
+                    Hello {{ request.user.first_name }},
+                    <a href="{% url "logout" %}">Logout</a>
+                {% else %}
+                    <a href="{% url "login" %}">Log-in</a>
+                {% endif %}
+            </span>
+        </div>
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li class="{{ message.tags }}">
+                    {{ message|safe }}
+                    <a href="{% url "edit" %}" class="close">x</a>
+                </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+
+        <div id="content">
+            {% block content %}
+            {% endblock %}
+        </div> -->
+        <script>
+            document.addEventListener("click", (e) => {
+            if ( e.target.id === "loginMenu" )
+          
+          document
+            .getElementById("bar")
+            .setAttribute("style", " transform: translate(-300px);");
+      
+       
+        });
+        </script>
+    </body>
+</html>

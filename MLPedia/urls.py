@@ -20,8 +20,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path("__reload__/", include("django_browser_reload.urls")),
     path('admin/', admin.site.urls),
     path('account/', include('account.urls')),
+    path('home/', include(('home.urls','home'), namespace='home')),
+    path('analytica/',include(('analytica.urls','analytica'), namespace='analytica')),   
 ]
 
 if settings.DEBUG:
