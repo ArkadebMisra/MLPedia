@@ -1,21 +1,49 @@
+
 {% extends "base.html" %}
+{% load static %}
 {% block title %}Log-in{% endblock %}
 {% block content %}
-    <h1>Log-in</h1>
-    {% if form.errors %}
-        <p>
-            Your username and password didn't match.
-            Please try again.
-        </p>
-    {% else %}
-        <p>Please, use the following form to log-in:</p>
-    {% endif %}
-    <div class="login-form">
-        <form action="{% url 'login' %}" method="post">
-            {{ form.as_p }}
-            {% csrf_token %}
-            <input type="hidden" name="next" value="{{ next }}" />
-            <p><input type="submit" value="Log-in"></p>
-        </form>
+<div class="h-auto w-screen relative ">
+    <img class="h-[723px] w-screen" src="{% static 'img/backdrop.jpg' %}" alt="">
+    <div class="h-[723px] w-screen bg-gray-900 bg-opacity-20 absolute top-0 left-0"></div>
+    <div class="h-4/5 w-2/3 absolute top-[10%] left-[17%] bg-slate-200 rounded-2xl drop-shadow-lg flex">
+        <div class="h-full w-[55%] rounded-2xl">
+            <img class="h-full rounded-l-2xl" src="{% static 'img/login.jpg' %}" alt="">
+        </div>
+        <div class="w-[45%] h-full relative ">
+            {% if form.errors %}
+            <p>
+                Your username and password didn't match.
+                Please try again.
+            </p>
+            {% else %}
+            <div class=" text-[#1e3164] text-3xl font-semibold  h-auto  absolute top-[15%] left-[10%] leading-[50px] ">Hello,<br>
+                Welcome Back
+                
+                <!-- <input type="text" class="  bg-slate-100 drop-shadow-md border-[#7d9cf0] rounded-md border  "> -->
+            </div>
+                {% endif %}
+                
+                <div class="login-form absolute top-[37%] left-[10%] ">
+                    <form action="{% url 'login' %}" method="post">
+                        {{ form.as_p }}
+                        {% csrf_token %}
+                        <input type="hidden" name="next" value="{{ next }}" />
+                        <p><input type="submit" value="Log-in" class="h-9 w-11/12 bg-[#304d9b] text-zinc-50 mt-6 cursor-pointer hover:bg-[#6482d6] hover:text-black active:border-none"></p>
+                    </form>
+                    <div class=" text-sm mt-2 font-light text-[#304d9b]">
+                        New here? <a href={% url "register" %} class="text-[#304d9b] hover:text-[#152347]  ">Register Now</a>
+                    </div>
+                </div>
+        </div>
     </div>
+</div>
+    <script>
+        const username = document.getElementById("id_username");
+        const password = document.getElementById("id_password");
+        username.classList.add("h-7","w-11/12","border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","mb-5","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]");
+        password.classList.add("h-7","w-11/12","border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","mb-5","pl-2", "hover:bg-[#abbef3]","hover:border-[#152347]");
+
+        console.log("Hello!!");
+    </script>
 {% endblock %}
