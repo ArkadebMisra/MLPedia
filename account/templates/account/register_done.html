@@ -1,7 +1,28 @@
 {% extends "base.html" %}
+{% load static %}
 {% block title %}Welcome{% endblock %}
 {% block content %}
-    <h1>Welcome {{ new_user.first_name }}!</h1>
-    <p>Your account has been successfully created. Now you can 
-        <a href="{% url "login" %}">log in</a>.</p>
+
+<div class="h-auto w-screen relative ">
+    <img class="h-[723px] w-screen" src="{% static 'img/register_done_backdrop.jpg' %}" alt="">
+    <div class="h-[723px] w-screen bg-gray-900 bg-opacity-10 absolute top-0 left-0"></div>
+    <div class="h-5/6 w-3/5 absolute top-[8%] left-[22%] bg-zinc-50 rounded-2xl drop-shadow-lg flex">
+        
+            <img class="h-3/6 absolute top-[29%] left-[28%]  rounded-l-2xl" src="{% static 'img/register_done.jpg' %}" alt="">
+        
+        <h1 class=" text-[#1e3164] w-full text-2xl font-normal absolute top-[10%] text-center">Hello there, {{ new_user.first_name }}!</h1>
+        <p class="text-[#324b8f] w-full text-base font-light absolute top-[18%] text-center">Your account has been successfully created.</p>
+        <p class="text-[#324b8f] w-full text-base font-light absolute bottom-[12%] text-center tracking-wider">
+            Now you can <br></p>
+            <div class="h-auto w-full absolute bottom-[5%] flex justify-center items-center">
+                <div class="h-8 w-2/12 bg-[#304d9b] text-zinc-50 mt-5 cursor-pointer hover:bg-[#6482d6] text-center p-0.5">
+                    <a href="{% url "login" %}" >log in</a>
+
+                </div>
+
+            </div>
+            
+        </p> 
+    </div>
+</div>
 {% endblock %}
