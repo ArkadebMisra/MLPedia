@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+ <h1>Visualize Your Data</h1>
+
+ <a href="{% url 'plotter:draw_line_graph' %}"> Line Graph</a>
+ <br>
+ <a href="{% url 'plotter:draw_bar_graph' %}"> Bar Graph</a>
+ <br>
+ <a href="{% url 'plotter:draw_scatter_graph' %}"> Scatter Graph</a>
+ <br>
+ <a href="{% url 'plotter:draw_pie_graph' %}"> Pie Graph</a>
+{% endblock %}

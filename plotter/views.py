@@ -8,6 +8,10 @@ from . forms import LineGraphCreateForm, BarGraphCreateForm, \
 from . utils import plot_bar_graph, plot_line_graph, plot_pie_graph, plot_scatter_graph
 
 
+def plotter_index(request):
+    return render(request, "plotter/plotter_index.html", {})
+
+
 def draw_line_graph(request):
     plot = None
     if request.method == 'POST':
