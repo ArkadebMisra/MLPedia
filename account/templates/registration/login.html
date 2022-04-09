@@ -11,20 +11,20 @@
             <img class="h-full rounded-l-2xl" src="{% static 'img/login.jpg' %}" alt="">
         </div>
         <div class="w-[45%] h-full relative ">
+            <div class=" text-[#1e3164] text-3xl font-semibold  h-auto  absolute top-[15%] left-[19%] leading-[50px] ">Hello,<br>
+                Welcome Back
+            </div>
             {% if form.errors %}
-            <p>
+            <!-- <p class=" text-[#1e3164] text-3xl font-semibold  h-auto  absolute top-[20%] left-[19%] leading-[50px]">
                 Your username and password didn't match.
                 Please try again.
-            </p>
-            {% else %}
-            <div class=" text-[#1e3164] text-3xl font-semibold  h-auto  absolute top-[15%] left-[10%] leading-[50px] ">Hello,<br>
-                Welcome Back
+            </p> -->
+            {% endif %}
                 
                 <!-- <input type="text" class="  bg-slate-100 drop-shadow-md border-[#7d9cf0] rounded-md border  "> -->
-            </div>
-                {% endif %}
+            
                 
-                <div class="login-form absolute top-[37%] left-[10%] ">
+                <div class="login-form absolute top-[37%] left-[19%] ">
                     <form action="{% url 'login' %}" method="post">
                         {{ form.as_p }}
                         {% csrf_token %}
@@ -41,9 +41,10 @@
     <script>
         const username = document.getElementById("id_username");
         const password = document.getElementById("id_password");
+        const errortext = document.getElementsByClassName("errorlist");
         username.classList.add("h-7","w-11/12","border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","mb-5","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]");
         password.classList.add("h-7","w-11/12","border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","mb-5","pl-2", "hover:bg-[#abbef3]","hover:border-[#152347]");
-
+        errortext[0].classList.add("text-sm", "my-5", "font-light", "text-[#304d9b]", "w-10/12");
         console.log("Hello!!");
     </script>
 {% endblock %}
