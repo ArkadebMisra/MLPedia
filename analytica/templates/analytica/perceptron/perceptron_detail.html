@@ -12,7 +12,7 @@
         <img src="{{ pc_model.plot.url }}" >
     {% endif %}
 
-    
+    <h1>Accuracy: {{ pc_model.model_accuracy }}</h1>
 
     <h1>predict label of new data points</h1>
     <form action="{{ pc_model.get_absolute_url }}" method="post">
