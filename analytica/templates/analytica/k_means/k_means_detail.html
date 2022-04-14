@@ -24,5 +24,8 @@
     </form>
     <h1>the prediction:  {{ prediction }}</h1>
 
+    <h1>delete this model</h1>
+    <a href="{% url 'analytica:k_means_delete' km_model.id km_model.slug %}">delete</a>
+
 </body>
 </html>

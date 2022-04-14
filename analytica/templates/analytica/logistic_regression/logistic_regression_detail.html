@@ -22,5 +22,8 @@
     </form>
     <h1>the prediction:  {{ prediction }}</h1>
 
+    <h1>delete this model</h1>
+    <a href="{% url 'analytica:logistic_regression_delete' lr_model.id lr_model.slug %}">delete</a>
+
 </body>
 </html>

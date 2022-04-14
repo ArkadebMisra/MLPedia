@@ -8,7 +8,7 @@
 </head>
 <body>
     <h1>{{ nn_model.title }}</h1>
-    <h1>{{ nn_model.model_description }}</h1>
+    <h1>Model Description {{ nn_model.model_description |linebreaks }}</h1>
     {% if nn_model.plot %}
         <img src="{{ nn_model.plot.url }}" >
     {% endif %}
@@ -21,6 +21,9 @@
         <input type="submit">
     </form>
     <h1>the prediction:  {{ prediction }}</h1>
+
+    <h1>delete this model</h1>
+    <a href="{% url 'analytica:neural_net_delete' nn_model.id nn_model.slug %}">delete</a>
 
 </body>
 </html>

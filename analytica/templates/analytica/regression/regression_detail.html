@@ -21,5 +21,7 @@
     </form>
     <h1>the prediction:  {{ prediction }}</h1>
 
+    <h1>delete this model</h1>
+    <a href="{% url 'analytica:regression_delete' rg_model.id rg_model.slug %}">delete</a>
 </body>
 </html>
