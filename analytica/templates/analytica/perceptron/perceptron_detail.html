@@ -8,6 +8,16 @@
 </head>
 <body>
     <h1>{{ pc_model.title }}</h1>
+
+    <div>
+        <h1>Uploaded Data</h1>
+        <h1><a href="{{pc_model.features_input.url}}" download>
+            Features Input </a> </h1>
+    
+        <h1><a href="{{pc_model.labels_input.url}}" download>
+            Labels input</a> </h1>
+    </div>
+
     {% if pc_model.plot %}
         <img src="{{ pc_model.plot.url }}" >
     {% endif %}

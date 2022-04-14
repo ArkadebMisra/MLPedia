@@ -8,6 +8,12 @@
 </head>
 <body>
     <h1>{{ km_model.title }}</h1>
+
+    <div>
+        <h1>Uploaded Data</h1>
+        <h1><a href="{{km_model.features_input.url}}" download>
+            Features Input </a> </h1>
+    </div>
     {% if km_model.plot %}
         <img src="{{ km_model.plot.url }}" >
     {% endif %}

@@ -63,7 +63,7 @@ def neural_net_create(request):
             #nn = Sequential([Linear(2, 4), ReLU(), Linear(4, 2), ReLU(), Linear(2,2), SoftMax()], NLL())
 
             # Modifies the weights and biases
-            nn.sgd(X, Y, iters=100000, lrate=0.005)
+            nn.sgd(X, Y, iters=int(request.POST['iterations']), lrate=0.005)
 
             weight_buffer = io.StringIO()
             weights_file = fm.write_nn(weight_buffer, nn)
@@ -164,7 +164,7 @@ def regression_create(request):
             rg = rg_utils.RegressionModel(X.shape[0], new_item.degree)
 
             # Modifies the weights and biases
-            rg.run_regression(X, y, iters=10000, lrate=0.005, lam=0)
+            rg.run_regression(X, y, iters=int(request.POST['iterations']), lrate=0.005, lam=0)
 
             weight_buffer = io.StringIO()
             weights_file = fm.write_rg(weight_buffer, rg)
@@ -176,6 +176,8 @@ def regression_create(request):
             new_item.weights_file.save(new_item.title+"_weights.csv", weights_file)
             # write_nn(new_item.weights_file.path, nn)
             new_item.save()
+            messages.success(request, 'Model added successfully')
+            return HttpResponseRedirect(reverse('analytica:regression_models_list'))
 
     else:
         form = RegressionCreateForm(data = request.GET)
@@ -252,7 +254,7 @@ def k_means_create(request):
             km = km_utils.KMeansClustur(new_item.no_of_clusters)
 
             # Modifies the weights and biases
-            km.run_k_means(X, iter=100000)
+            km.run_k_means(X, iter=int(request.POST['iterations']))
 
             weight_buffer = io.StringIO()
             weights_file = fm.write_k_means(weight_buffer, km)
@@ -268,6 +270,8 @@ def k_means_create(request):
                                                  output_file)
             # write_nn(new_item.weights_file.path, nn)
             new_item.save()
+            messages.success(request, 'Model added successfully')
+            return HttpResponseRedirect(reverse('analytica:k_means_models_list'))
 
     else:
         form = KMeansCreateForm(data = request.GET)
@@ -354,7 +358,7 @@ def logistic_regression_create(request):
             # print(y)
 
             # Modifies the weights and biases
-            lr.run_lr(X, y, iters=100000, lrate=0.005, epsilon=.001, lam=.1)
+            lr.run_lr(X, y, iters=int(request.POST['iterations']), lrate=0.005, epsilon=.001, lam=.1)
 
             weight_buffer = io.StringIO()
             weights_file = fm.write_rg(weight_buffer, lr)
@@ -366,6 +370,8 @@ def logistic_regression_create(request):
             new_item.weights_file.save(new_item.title+"_weights.csv", weights_file)
             # write_nn(new_item.weights_file.path, nn)
             new_item.save()
+            messages.success(request, 'Model added successfully')
+            return HttpResponseRedirect(reverse('analytica:logistic_regression_models_list'))
 
     else:
         form = LogisticRegressionCreateForm(data = request.GET)
@@ -451,7 +457,7 @@ def perceptron_create(request):
             pc = pc_utils.Perceptron()
 
             # Modifies the weights and biases
-            pc.run_perceptron(X, y, T=10000)
+            pc.run_perceptron(X, y, T=int(request.POST['iterations']))
 
             weight_buffer = io.StringIO()
             weights_file = fm.write_rg(weight_buffer, pc)
@@ -463,6 +469,8 @@ def perceptron_create(request):
             new_item.weights_file.save(new_item.title+"_weights.csv", weights_file)
             # write_nn(new_item.weights_file.path, nn)
             new_item.save()
+            messages.success(request, 'Model added successfully')
+            return HttpResponseRedirect(reverse('analytica:perceptron_models_list'))
 
     else:
         form = PerceptronCreateForm(data = request.GET)
