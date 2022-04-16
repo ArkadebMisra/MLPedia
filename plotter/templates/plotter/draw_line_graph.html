@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,83 +10,87 @@
         <title>Document</title>
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body>
-        <form action="." method="post">
-            <div class="form_group">
-                {{ form.graph_title.label }} {{ form.graph_title }}
-                <br />
-                <br />
+    <body class="bg-slate-300 h-full w-screen">
+        <div class="h-full w-screen relative flex justify-center items-center text-center">
+            <div class="h-full w-full absolute top-12  "> 
+                <form action="." method="post" class="w-full h-auto">
+                    <div class="form_group text-blue-900 text-xl">
+                        {{ form.graph_title.label }} {{ form.graph_title }}
+                        <br />
+                        <br />
+                    </div>
+                    
+                    <div class="form_group text-blue-900 text-xl">
+                        X Axis {{ form.x_axis_label }} {{ form.x_scale }}
+                        <br />
+                        <br />
+                    </div>
+                    
+                    <div class="form_group text-blue-900 text-xl">
+                        Y Axis {{ form.y_axis_label }} {{ form.y_scale }}
+                        <br />
+                        <br />
+                    </div>
+                    
+                    <div class="form_group text-blue-900 text-xl">
+                        {{ form.number_of_lines.label }} {{ form.number_of_lines }}
+                        <br />
+                        <br />
+                    </div>
+                    
+                    <div id="data_form_fields ">
+                        <div class="form_group text-blue-900 text-xl" id="line_1_data">
+                            Line 1 data
+                            <p>{{ form.data1_label.label}} {{ form.data1_label}}</p>
+                            <p>{{ form.x1.label }} {{ form.x1 }}</p>
+                            <p>{{ form.y1.label }} {{ form.y1 }}</p>
+                            <br />
+                            <br />
+                        </div>
+                        <div class="form_group hidden text-blue-900 text-xl" id="line_2_data">
+                            Line 2 data
+                            <p>{{ form.data2_label.label}} {{ form.data2_label}}</p>
+                            <p>{{ form.x2.label }} {{ form.x2 }}</p>
+                            <p>{{ form.y2.label }} {{ form.y2 }}</p>
+                            <br />
+                            <br />
+                        </div>
+                        <div class="form_group hidden text-blue-900 text-xl" id="line_3_data">
+                            Line 3 data
+                            <p>{{ form.data3_label.label}} {{ form.data3_label}}</p>
+                            <p>{{ form.x3.label }} {{ form.x3 }}</p>
+                            <p>{{ form.y3.label }} {{ form.y3 }}</p>
+                            <br />
+                            <br />
+                        </div>
+                        <div class="form_group hidden text-blue-900 text-xl" id="line_4_data">
+                            Line 4 data
+                            <p>{{ form.data4_label.label}} {{ form.data4_label}}</p>
+                            <p>{{ form.x4.label }} {{ form.x4 }}</p>
+                            <p>{{ form.y4.label }} {{ form.y4 }}</p>
+                            <br />
+                            <br />
+                        </div>
+                        <div class="form_group hidden text-blue-900 text-xl" id="line_5_data">
+                            Line 5 data
+                            <p>{{ form.data5_label.label}} {{ form.data5_label}}</p>
+                            <p>{{ form.x5.label }} {{ form.x5 }}</p>
+                            <p>{{ form.y5.label }} {{ form.y5 }}</p>
+                            <br />
+                            <br />
+                        </div>
+                    </div>
+                    
+                    {% csrf_token %}
+                    <input type="submit" value="draw">
+                </form>
+                {% if plot %}
+                <img src="data:image/png;base64, {{ plot|safe }}">
+                <h1><a href="data:image/png;base64, {{ plot|safe }}" download>
+                    download </a> </h1>
+                    {% endif %}    
             </div>
-    
-            <div class="form_group">
-                X Axis {{ form.x_axis_label }} {{ form.x_scale }}
-                <br />
-                <br />
-            </div>
-    
-            <div class="form_group">
-                Y Axis {{ form.y_axis_label }} {{ form.y_scale }}
-                <br />
-                <br />
-            </div>
-    
-            <div class="form_group">
-                {{ form.number_of_lines.label }} {{ form.number_of_lines }}
-                <br />
-                <br />
-            </div>
-    
-            <div id="data_form_fields">
-                <div class="form_group" id="line_1_data">
-                    Line 1 data
-                    <p>{{ form.data1_label.label}} {{ form.data1_label}}</p>
-                    <p>{{ form.x1.label }} {{ form.x1 }}</p>
-                    <p>{{ form.y1.label }} {{ form.y1 }}</p>
-                    <br />
-                    <br />
-                </div>
-                <div class="form_group hidden" id="line_2_data">
-                    Line 2 data
-                    <p>{{ form.data2_label.label}} {{ form.data2_label}}</p>
-                    <p>{{ form.x2.label }} {{ form.x2 }}</p>
-                    <p>{{ form.y2.label }} {{ form.y2 }}</p>
-                    <br />
-                    <br />
-                </div>
-                <div class="form_group hidden" id="line_3_data">
-                    Line 3 data
-                    <p>{{ form.data3_label.label}} {{ form.data3_label}}</p>
-                    <p>{{ form.x3.label }} {{ form.x3 }}</p>
-                    <p>{{ form.y3.label }} {{ form.y3 }}</p>
-                    <br />
-                    <br />
-                </div>
-                <div class="form_group hidden" id="line_4_data">
-                    Line 4 data
-                    <p>{{ form.data4_label.label}} {{ form.data4_label}}</p>
-                    <p>{{ form.x4.label }} {{ form.x4 }}</p>
-                    <p>{{ form.y4.label }} {{ form.y4 }}</p>
-                    <br />
-                    <br />
-                </div>
-                <div class="form_group hidden" id="line_5_data">
-                    Line 5 data
-                    <p>{{ form.data5_label.label}} {{ form.data5_label}}</p>
-                    <p>{{ form.x5.label }} {{ form.x5 }}</p>
-                    <p>{{ form.y5.label }} {{ form.y5 }}</p>
-                    <br />
-                    <br />
-                </div>
-            </div>
-
-            {% csrf_token %}
-            <input type="submit" value="draw">
-        </form>
-        {% if plot %}
-            <img src="data:image/png;base64, {{ plot|safe }}">
-            <h1><a href="data:image/png;base64, {{ plot|safe }}" download>
-                download </a> </h1>
-        {% endif %}    
+        </div>
     </body>
     <script>
         const resetForm = (value) => {
@@ -104,4 +111,19 @@
             resetForm(+e.target.value);
         };
     </script>
+    <script>
+        const graph_title = document.getElementById("id_graph_title");
+        const x_axis_label=document.getElementById("id_x_axis_label");
+        const x_scale=document.getElementById("id_x_scale");
+        const y_axis_label=document.getElementById("id_y_axis_label");
+        const y_scale=document.getElementById("id_y_scale");
+        const number_of_lines=document.getElementById("id_number_of_lines");
+        graph_title.classList.add("w-4/12","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mr-7","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        x_axis_label.classList.add("w-3/12","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mr-7","hover:bg-[#abbef3]","hover:border-[#152347]");
+        x_scale.classList.add("w-1/12","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mr-7","hover:bg-[#abbef3]","hover:border-[#152347]");
+        y_axis_label.classList.add("w-3/12","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mr-7","hover:bg-[#abbef3]","hover:border-[#152347]");
+        y_scale.classList.add("w-1/12","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mr-7","hover:bg-[#abbef3]","hover:border-[#152347]");
+        number_of_lines.classList.add("w-3/12","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mr-7","hover:bg-[#abbef3]","hover:border-[#152347]");
+    </script>
 </html>
+{% endblock %}
