@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django import forms
+from django.urls import reverse
 from django.contrib.auth.decorators import login_required
-
+from django.http import HttpResponse,HttpResponseRedirect, Http404
+from django.contrib import messages
 
 import io
 import numpy as np
@@ -61,7 +63,7 @@ def neural_net_create(request):
             #nn = Sequential([Linear(2, 4), ReLU(), Linear(4, 2), ReLU(), Linear(2,2), SoftMax()], NLL())
 
             # Modifies the weights and biases
-            nn.sgd(X, Y, iters=100000, lrate=0.005)
+            nn.sgd(X, Y, iters=int(request.POST['iterations']), lrate=0.005)
 
             weight_buffer = io.StringIO()
             weights_file = fm.write_nn(weight_buffer, nn)
@@ -73,6 +75,8 @@ def neural_net_create(request):
             new_item.weights_file.save(new_item.title+"_weights.csv", weights_file)
             # write_nn(new_item.weights_file.path, nn)
             new_item.save()
+            messages.success(request, 'Model added successfully')
+            return HttpResponseRedirect(reverse('analytica:neural_net_models_list'))
 
     else:
         form = NuralNetCreateForm(data = request.GET)
@@ -118,6 +122,21 @@ def neural_net_detail(request, model_id, model):
                         'prediction': prediction})  
 
 
+@login_required
+def neural_net_delete(request,model_id,model):
+    nn_model = get_object_or_404(NeuralNet,id = model_id, slug=model)
+    if nn_model.user != request.user:
+        raise Http404
+    else:
+        if request.method == 'POST':
+            nn_model.delete()
+            return HttpResponseRedirect(reverse('analytica:neural_net_models_list'))
+
+    return render(request,
+                    'analytica/neural_nets/neural_net_delete.html',
+                    {'nn_model':nn_model})
+
+                    
 #views for linear and polynomial regression
 
 @login_required
@@ -145,7 +164,7 @@ def regression_create(request):
             rg = rg_utils.RegressionModel(X.shape[0], new_item.degree)
 
             # Modifies the weights and biases
-            rg.run_regression(X, y, iters=10000, lrate=0.005, lam=0)
+            rg.run_regression(X, y, iters=int(request.POST['iterations']), lrate=0.005, lam=0)
 
             weight_buffer = io.StringIO()
             weights_file = fm.write_rg(weight_buffer, rg)
@@ -157,6 +176,8 @@ def regression_create(request):
             new_item.weights_file.save(new_item.title+"_weights.csv", weights_file)
             # write_nn(new_item.weights_file.path, nn)
             new_item.save()
+            messages.success(request, 'Model added successfully')
+            return HttpResponseRedirect(reverse('analytica:regression_models_list'))
 
     else:
         form = RegressionCreateForm(data = request.GET)
@@ -196,7 +217,21 @@ def regression_detail(request, model_id, model):
         return render(request,'analytica/regression/regression_detail.html', 
                         {'rg_model': rg_model, 
                         'form': RegressionPredictionForm(), 
-                        'prediction': prediction})  
+                        'prediction': prediction})
+
+@login_required
+def regression_delete(request,model_id,model):
+    rg_model = get_object_or_404(Regression,id = model_id, slug=model)
+    if rg_model.user != request.user:
+        raise Http404
+    else:
+        if request.method == 'POST':
+            rg_model.delete()
+            return HttpResponseRedirect(reverse('analytica:regression_models_list'))
+
+    return render(request,
+                    'analytica/regression/regression_delete.html',
+                    {'rg_model':rg_model})  
 
 
 ############# Views for K Means Clusturing #########################
@@ -219,7 +254,7 @@ def k_means_create(request):
             km = km_utils.KMeansClustur(new_item.no_of_clusters)
 
             # Modifies the weights and biases
-            km.run_k_means(X, iter=100000)
+            km.run_k_means(X, iter=int(request.POST['iterations']))
 
             weight_buffer = io.StringIO()
             weights_file = fm.write_k_means(weight_buffer, km)
@@ -235,6 +270,8 @@ def k_means_create(request):
                                                  output_file)
             # write_nn(new_item.weights_file.path, nn)
             new_item.save()
+            messages.success(request, 'Model added successfully')
+            return HttpResponseRedirect(reverse('analytica:k_means_models_list'))
 
     else:
         form = KMeansCreateForm(data = request.GET)
@@ -278,6 +315,21 @@ def k_means_detail(request, model_id, model):
 
 
 
+@login_required
+def k_means_delete(request,model_id,model):
+    km_model = get_object_or_404(KMeansCluster ,id = model_id, slug=model)
+    if km_model.user != request.user:
+        raise Http404
+    else:
+        if request.method == 'POST':
+            km_model.delete()
+            return HttpResponseRedirect(reverse('analytica:k_means_models_list'))
+
+    return render(request,
+                    'analytica/k_means/k_means_delete.html',
+                    {'km_model':km_model})  
+
+
 ###########Views for Logistic Regression##############################
 
 @login_required
@@ -306,7 +358,7 @@ def logistic_regression_create(request):
             # print(y)
 
             # Modifies the weights and biases
-            lr.run_lr(X, y, iters=100000, lrate=0.005, epsilon=.001, lam=.1)
+            lr.run_lr(X, y, iters=int(request.POST['iterations']), lrate=0.005, epsilon=.001, lam=.1)
 
             weight_buffer = io.StringIO()
             weights_file = fm.write_rg(weight_buffer, lr)
@@ -318,6 +370,8 @@ def logistic_regression_create(request):
             new_item.weights_file.save(new_item.title+"_weights.csv", weights_file)
             # write_nn(new_item.weights_file.path, nn)
             new_item.save()
+            messages.success(request, 'Model added successfully')
+            return HttpResponseRedirect(reverse('analytica:logistic_regression_models_list'))
 
     else:
         form = LogisticRegressionCreateForm(data = request.GET)
@@ -360,7 +414,21 @@ def logistic_regression_detail(request, model_id, model):
                         "analytica/logistic_regression/logistic_regression_detail.html", 
                         {'lr_model': lr_model, 
                         'form': LogisticRegressionPredictionForm(), 
-                        'prediction': prediction})  
+                        'prediction': prediction})
+
+@login_required
+def logistic_regression_delete(request,model_id,model):
+    lr_model = get_object_or_404(LogisticRegression ,id = model_id, slug=model)
+    if lr_model.user != request.user:
+        raise Http404
+    else:
+        if request.method == 'POST':
+            lr_model.delete()
+            return HttpResponseRedirect(reverse('analytica:logistic_regression_models_list'))
+
+    return render(request,
+                    'analytica/logistic_regression/logistic_regression_delete.html',
+                    {'lr_model':lr_model})   
 
 ###########Views for perceptron##############################
 
@@ -389,7 +457,7 @@ def perceptron_create(request):
             pc = pc_utils.Perceptron()
 
             # Modifies the weights and biases
-            pc.run_perceptron(X, y, T=10000)
+            pc.run_perceptron(X, y, T=int(request.POST['iterations']))
 
             weight_buffer = io.StringIO()
             weights_file = fm.write_rg(weight_buffer, pc)
@@ -401,6 +469,8 @@ def perceptron_create(request):
             new_item.weights_file.save(new_item.title+"_weights.csv", weights_file)
             # write_nn(new_item.weights_file.path, nn)
             new_item.save()
+            messages.success(request, 'Model added successfully')
+            return HttpResponseRedirect(reverse('analytica:perceptron_models_list'))
 
     else:
         form = PerceptronCreateForm(data = request.GET)
@@ -444,4 +514,18 @@ def perceptron_detail(request, model_id, model):
                         "analytica/perceptron/perceptron_detail.html", 
                         {'pc_model': pc_model, 
                         'form': PerceptronPredictionForm(), 
-                        'prediction': prediction})  
+                        'prediction': prediction})
+
+@login_required
+def perceptron_delete(request,model_id,model):
+    pc_model = get_object_or_404(Perceptron ,id = model_id, slug=model)
+    if pc_model.user != request.user:
+        raise Http404
+    else:
+        if request.method == 'POST':
+            pc_model.delete()
+            return HttpResponseRedirect(reverse('analytica:perceptron_models_list'))
+
+    return render(request,
+                    'analytica/perceptron/perceptron_delete.html',
+                    {'pc_model':pc_model})   

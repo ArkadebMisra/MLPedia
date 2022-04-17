@@ -8,11 +8,21 @@
 </head>
 <body>
     <h1>{{ pc_model.title }}</h1>
+
+    <div>
+        <h1>Uploaded Data</h1>
+        <h1><a href="{{pc_model.features_input.url}}" download>
+            Features Input </a> </h1>
+    
+        <h1><a href="{{pc_model.labels_input.url}}" download>
+            Labels input</a> </h1>
+    </div>
+
     {% if pc_model.plot %}
         <img src="{{ pc_model.plot.url }}" >
     {% endif %}
 
-    
+    <h1>Accuracy: {{ pc_model.model_accuracy }}</h1>
 
     <h1>predict label of new data points</h1>
     <form action="{{ pc_model.get_absolute_url }}" method="post">
@@ -21,6 +31,9 @@
         <input type="submit">
     </form>
     <h1>the prediction:  {{ prediction }}</h1>
+
+    <h1>delete this model</h1>
+    <a href="{% url 'analytica:perceptron_delete' pc_model.id pc_model.slug %}">delete</a>
 
 </body>
 </html>

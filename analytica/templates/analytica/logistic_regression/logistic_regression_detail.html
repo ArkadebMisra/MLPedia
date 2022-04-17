@@ -8,6 +8,16 @@
 </head>
 <body>
     <h1>{{ lr_model.title }}</h1>
+
+    <div>
+        <h1>Uploaded Data</h1>
+        <h1><a href="{{lr_model.features_input.url}}" download>
+            Features Input </a> </h1>
+    
+        <h1><a href="{{lr_model.labels_input.url}}" download>
+            Labels input</a> </h1>
+    </div>
+
     {% if lr_model.plot %}
         <img src="{{ lr_model.plot.url }}" >
     {% endif %}
@@ -21,6 +31,9 @@
         <input type="submit">
     </form>
     <h1>the prediction:  {{ prediction }}</h1>
+
+    <h1>delete this model</h1>
+    <a href="{% url 'analytica:logistic_regression_delete' lr_model.id lr_model.slug %}">delete</a>
 
 </body>
 </html>
