@@ -10,10 +10,10 @@
         <title>Document</title>
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body class="bg-slate-300 h-full w-screen">
-        <div class="h-full w-screen relative flex justify-center items-center text-center">
-            <div class="h-full w-full absolute top-12  "> 
-                <form action="." method="post" class="w-full h-auto">
+    <body class="bg-slate-300 h-full ">
+        <div class="h-screen w-full relative ">
+            <div class="h-full w-full absolute top-12 text-center"> 
+                <form action="." method="post" class="">
                     <div class="form_group text-blue-900 text-xl">
                         {{ form.graph_title.label }} {{ form.graph_title }}
                         <br />
@@ -38,57 +38,67 @@
                         <br />
                     </div>
                     
-                    <div id="data_form_fields ">
+                    <div id="data_form_fields">
                         <div class="form_group text-blue-900 text-xl" id="line_1_data">
-                            Line 1 data
+                            <div class="font-semibold">
+                                Line 1 data
+                            </div>
                             <p>{{ form.data1_label.label}} {{ form.data1_label}}</p>
                             <p>{{ form.x1.label }} {{ form.x1 }}</p>
                             <p>{{ form.y1.label }} {{ form.y1 }}</p>
-                            <br />
-                            <br />
+                            
                         </div>
                         <div class="form_group hidden text-blue-900 text-xl" id="line_2_data">
-                            Line 2 data
+                            <div class="font-semibold">
+                                Line 2 data
+                            </div>
                             <p>{{ form.data2_label.label}} {{ form.data2_label}}</p>
                             <p>{{ form.x2.label }} {{ form.x2 }}</p>
                             <p>{{ form.y2.label }} {{ form.y2 }}</p>
-                            <br />
-                            <br />
+                           
                         </div>
                         <div class="form_group hidden text-blue-900 text-xl" id="line_3_data">
-                            Line 3 data
+                            <div class="font-semibold">
+                                Line 3 data
+                            </div>
                             <p>{{ form.data3_label.label}} {{ form.data3_label}}</p>
                             <p>{{ form.x3.label }} {{ form.x3 }}</p>
                             <p>{{ form.y3.label }} {{ form.y3 }}</p>
-                            <br />
-                            <br />
+                            
                         </div>
                         <div class="form_group hidden text-blue-900 text-xl" id="line_4_data">
-                            Line 4 data
+                            <div class="font-semibold">
+                                Line 4 data
+                            </div>
                             <p>{{ form.data4_label.label}} {{ form.data4_label}}</p>
                             <p>{{ form.x4.label }} {{ form.x4 }}</p>
                             <p>{{ form.y4.label }} {{ form.y4 }}</p>
-                            <br />
-                            <br />
+                            
                         </div>
                         <div class="form_group hidden text-blue-900 text-xl" id="line_5_data">
-                            Line 5 data
+                            <div class="font-semibold">
+                                Line 5 data
+                            </div>
                             <p>{{ form.data5_label.label}} {{ form.data5_label}}</p>
                             <p>{{ form.x5.label }} {{ form.x5 }}</p>
                             <p>{{ form.y5.label }} {{ form.y5 }}</p>
-                            <br />
-                            <br />
+                            
                         </div>
                     </div>
                     
                     {% csrf_token %}
-                    <input type="submit" value="draw">
+                    <input type="submit" value="Draw" class="h-10 w-32  border border-white border-solid rounded-xl bg-[#316fa8] text-white text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none mb-10">
                 </form>
                 {% if plot %}
-                <img src="data:image/png;base64, {{ plot|safe }}">
-                <h1><a href="data:image/png;base64, {{ plot|safe }}" download>
-                    download </a> </h1>
-                    {% endif %}    
+                <div class=" w-full flex flex-row justify-center">
+
+                    <img src="data:image/png;base64, {{ plot|safe }}" class="bg-slate-200 drop-shadow-[-10px_10px_5px_rgba(0,0,0,0.25)] rounded-3xl ">
+                </div>
+                <div class=" w-full flex flex-row justify-center">
+                    <h1 class="h-10 w-32  border border-white border-solid rounded-xl bg-[#316fa8] text-white text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none mb-10 pt-2 mt-7"><a href="data:image/png;base64, {{ plot|safe }}" download>
+                        download </a> </h1>
+                </div>
+                        {% endif %}    
             </div>
         </div>
     </body>
@@ -118,12 +128,42 @@
         const y_axis_label=document.getElementById("id_y_axis_label");
         const y_scale=document.getElementById("id_y_scale");
         const number_of_lines=document.getElementById("id_number_of_lines");
-        graph_title.classList.add("w-4/12","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mr-7","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
-        x_axis_label.classList.add("w-3/12","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mr-7","hover:bg-[#abbef3]","hover:border-[#152347]");
-        x_scale.classList.add("w-1/12","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mr-7","hover:bg-[#abbef3]","hover:border-[#152347]");
-        y_axis_label.classList.add("w-3/12","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mr-7","hover:bg-[#abbef3]","hover:border-[#152347]");
-        y_scale.classList.add("w-1/12","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mr-7","hover:bg-[#abbef3]","hover:border-[#152347]");
-        number_of_lines.classList.add("w-3/12","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mr-7","hover:bg-[#abbef3]","hover:border-[#152347]");
+        const data2_label=document.getElementById("id_data2_label");
+        const x2=document.getElementById("id_x2");
+        const y2=document.getElementById("id_y2");
+        const data3_label=document.getElementById("id_data3_label");
+        const x3=document.getElementById("id_x3");
+        const y3=document.getElementById("id_y3");
+        const data4_label=document.getElementById("id_data4_label");
+        const x4=document.getElementById("id_x4");
+        const y4=document.getElementById("id_y4");
+        const data5_label=document.getElementById("id_data5_label");
+        const x5=document.getElementById("id_x5");
+        const y5=document.getElementById("id_y5");
+        const data1_label=document.getElementById("id_data1_label");
+        const x1=document.getElementById("id_x1");
+        const y1=document.getElementById("id_y1");
+        graph_title.classList.add("w-4/12","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        x_axis_label.classList.add("w-3/12","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","mr-7","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]");
+        x_scale.classList.add("w-1/12","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]");
+        y_axis_label.classList.add("w-3/12","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","mr-7","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]");
+        y_scale.classList.add("w-1/12","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]");
+        number_of_lines.classList.add("w-[30%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]");
+        data1_label.classList.add("w-4/12","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","my-7","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        x1.classList.add("w-[32%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mb-7","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        y1.classList.add("w-[32%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mb-7","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        data2_label.classList.add("w-4/12","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","my-7","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        x2.classList.add("w-[32%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mb-7","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        y2.classList.add("w-[32%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mb-7","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        data3_label.classList.add("w-4/12","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","my-7","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        x3.classList.add("w-[32%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mb-7","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        y3.classList.add("w-[32%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mb-7","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        data4_label.classList.add("w-4/12","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","my-7","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        x4.classList.add("w-[32%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mb-7","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        y4.classList.add("w-[32%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mb-7","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        data5_label.classList.add("w-4/12","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","my-7","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        x5.classList.add("w-[32%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mb-7","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        y5.classList.add("w-[32%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mb-7","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
     </script>
 </html>
 {% endblock %}
