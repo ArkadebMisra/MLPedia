@@ -117,6 +117,9 @@
 
         const linesSelector = document.getElementById("id_number_of_lines");
         console.log(linesSelector);
+        // without selecting fields, may have to remove the next line.
+        // resetForm(+e.target.value);
+
         linesSelector.onchange = (e) => {
             resetForm(+e.target.value);
         };

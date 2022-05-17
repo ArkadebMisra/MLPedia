@@ -76,16 +76,16 @@ def plot_bar_graph(form_data):
 
     plt.xlabel(form_data.cleaned_data['x_axis_label'])
     plt.ylabel(form_data.cleaned_data['y_axis_label'])
-    if form_data.cleaned_data['oreantation'] == 'horizontal':
-        for i in range(1, no_of_bars+1):
-            plt.barh(params['bar'+str(i)+'_data_values'], x+width*(i-1),
-                width = width,
-                label=params['bar'+str(i)+'_label'])
-    else:
-        for i in range(1, no_of_bars+1):
-            plt.bar(x+width*(i-1), params['bar'+str(i)+'_data_values'],
-                width = width,
-                label=params['bar'+str(i)+'_label'])
+    # if form_data.cleaned_data['oreantation'] == 'horizontal':
+    #     for i in range(1, no_of_bars+1):
+    #         plt.barh(params['bar'+str(i)+'_data_values'], x+width*(i-1),
+    #             width = width,
+    #             label=params['bar'+str(i)+'_label'])
+    # else:
+    for i in range(1, no_of_bars+1):
+        plt.bar(x+width*(i-1), params['bar'+str(i)+'_data_values'],
+            width = width,
+            label=params['bar'+str(i)+'_label'])
 
     plt.xticks(x + (width*no_of_bars)/2,params['data_labels'])
 

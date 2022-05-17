@@ -77,8 +77,8 @@ class LineGraphCreateForm(forms.Form):
 
 
 bar_graph_oreantation_choices = (
-    ("linear", "linear"),
-    ("log", "log")
+    ("vertical", "vertical"),
+    #("horizontal", "horizontal")
 )
 
 class BarGraphCreateForm(forms.Form):
@@ -86,7 +86,7 @@ class BarGraphCreateForm(forms.Form):
                                 max_length=100,
                                 required=False)
 
-    # oreantation = forms.ChoiceField(label='X Axis Scale', 
+    # oreantation = forms.ChoiceField(label='Oreantation', 
     #                                 choices = bar_graph_oreantation_choices)
     x_axis_label = forms.CharField(label='X Axis Label',
                                 max_length=100,

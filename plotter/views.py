@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.urls import reverse
+from django.http import HttpResponse,HttpResponseRedirect, Http404
 
 # Create your views here.
 
@@ -12,15 +14,22 @@ def plotter_index(request):
     return render(request, "plotter/plotter_index.html", {})
 
 
-def draw_line_graph(request):
-    plot = None
-    if request.method == 'POST':
-            form = LineGraphCreateForm(request.POST)
-            if form.is_valid():
-                plot = plot_line_graph(form)
+def error(request, error_from):
+    return render(request, "plotter/error.html",{'error_from':error_from})
 
-    else:
-        form = LineGraphCreateForm(data = request.GET)
+def draw_line_graph(request):
+    try:
+        plot = None
+        if request.method == 'POST':
+                form = LineGraphCreateForm(request.POST)
+                if form.is_valid():
+                    plot = plot_line_graph(form)
+
+        else:
+            form = LineGraphCreateForm(data = request.GET)
+    except:
+        return HttpResponseRedirect(
+            reverse('plotter:error', kwargs={'error_from':'line_graph'}))
     return render(request, "plotter/draw_line_graph.html",{
         'form': form,
         'plot': plot,
@@ -28,14 +37,18 @@ def draw_line_graph(request):
     })
 
 def draw_bar_graph(request):
-    plot = None
-    if request.method == 'POST':
-            form = BarGraphCreateForm(request.POST)
-            if form.is_valid():
-                plot = plot_bar_graph(form)
+    try:
+        plot = None
+        if request.method == 'POST':
+                form = BarGraphCreateForm(request.POST)
+                if form.is_valid():
+                    plot = plot_bar_graph(form)
 
-    else:
-        form = BarGraphCreateForm(data = request.GET)
+        else:
+            form = BarGraphCreateForm(data = request.GET)
+    except:
+        return HttpResponseRedirect(
+            reverse('plotter:error', kwargs={'error_from':'bar_graph'}))
     return render(request, "plotter/draw_bar_graph.html",{
         'form': form,
         'plot': plot,
@@ -43,14 +56,18 @@ def draw_bar_graph(request):
     })
 
 def draw_scatter_graph(request):
-    plot = None
-    if request.method == 'POST':
-            form = ScatterGraphCreateForm(request.POST)
-            if form.is_valid():
-                plot = plot_scatter_graph(form)
+    try:
+        plot = None
+        if request.method == 'POST':
+                form = ScatterGraphCreateForm(request.POST)
+                if form.is_valid():
+                    plot = plot_scatter_graph(form)
 
-    else:
-        form = ScatterGraphCreateForm(data = request.GET)
+        else:
+            form = ScatterGraphCreateForm(data = request.GET)
+    except:
+        return HttpResponseRedirect(
+            reverse('plotter:error', kwargs={'error_from':'scatter_graph'}))
     return render(request, "plotter/draw_scatter_graph.html",{
         'form': form,
         'plot': plot,
@@ -58,14 +75,18 @@ def draw_scatter_graph(request):
     })
 
 def draw_pie_graph(request):
-    plot = None
-    if request.method == 'POST':
-            form = PieGraphCreateForm(request.POST)
-            if form.is_valid():
-                plot = plot_pie_graph(form)
+    try:
+        plot = None
+        if request.method == 'POST':
+                form = PieGraphCreateForm(request.POST)
+                if form.is_valid():
+                    plot = plot_pie_graph(form)
 
-    else:
-        form = PieGraphCreateForm(data = request.GET)
+        else:
+            form = PieGraphCreateForm(data = request.GET)
+    except:
+        return HttpResponseRedirect(
+            reverse('plotter:error', kwargs={'error_from':'pie_graph'}))
     return render(request, "plotter/draw_pie_graph.html",{
         'form': form,
         'plot': plot,

@@ -8,4 +8,5 @@ urlpatterns = [
     path("draw_bar_graph/", views.draw_bar_graph, name="draw_bar_graph"),
     path("draw_scatter_graph/", views.draw_scatter_graph, name="draw_scatter_graph"),
     path("draw_pie_graph/", views.draw_pie_graph, name="draw_pie_graph"),
+    path('error/<str:error_from>/', views.error,name='error'),
 ]
