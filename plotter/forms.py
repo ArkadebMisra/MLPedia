@@ -86,8 +86,8 @@ class BarGraphCreateForm(forms.Form):
                                 max_length=100,
                                 required=False)
 
-    oreantation = forms.ChoiceField(label='X Axis Scale', 
-                                    choices = bar_graph_oreantation_choices)
+    # oreantation = forms.ChoiceField(label='X Axis Scale', 
+    #                                 choices = bar_graph_oreantation_choices)
     x_axis_label = forms.CharField(label='X Axis Label',
                                 max_length=100,
                                 required=False)
