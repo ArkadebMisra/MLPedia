@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,33 +10,53 @@
         <title>Document</title>
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body>
-        <form action="." method="post">
-            <div class="form_group">
-                {{ form.graph_title.label }} {{ form.graph_title }}
-                <br />
-                <br />
-            </div>
-    
-            <div class="form_group">
-                {{ form.data_labels.label }} {{ form.data_labels }}
-                <br />
-                <br />
-            </div>
+    <body class="bg-slate-300 h-full ">
+        <div class="h-screen w-full relative ">
+            <div class="h-full w-full absolute top-12 text-center"> 
+                <form action="." method="post">
+                    <div class="form_group text-blue-900 text-xl">
+                        {{ form.graph_title.label }} {{ form.graph_title }}
+                        <br />
+                        <br />
+                    </div>
+                    
+                    <div class="form_group text-blue-900 text-xl">
+                        {{ form.data_labels.label }} {{ form.data_labels }}
+                        <br />
+                        <br />
+                    </div>
+                    
+                    <div class="form_group text-blue-900 text-xl">
+                        {{ form.data_values.label }} {{ form.data_values }}
+                        <br />
+                        <br />
+                    </div>
+                    
+                    {% csrf_token %}
+                    <input type="submit" value="draw" class="h-10 w-32  border border-white border-solid rounded-xl bg-[#316fa8] text-white text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none mb-10 cursor-pointer">
+                </form>
+                {% if plot %}
+                <div class=" w-full flex flex-row justify-center">
 
-            <div class="form_group">
-                {{ form.data_values.label }} {{ form.data_values }}
-                <br />
-                <br />
-            </div>
+                    <img src="data:image/png;base64, {{ plot|safe }}" class="bg-slate-200 drop-shadow-[-10px_10px_5px_rgba(0,0,0,0.25)] rounded-3xl ">
+                </div>
+                <div class=" w-full flex flex-row justify-center">
 
-            {% csrf_token %}
-            <input type="submit" value="draw">
-        </form>
-        {% if plot %}
-            <img src="data:image/png;base64, {{ plot|safe }}">
-            <h1><a href="data:image/png;base64, {{ plot|safe }}" download>
-                download </a> </h1>
-        {% endif %}    
+                    <h1 class="h-10 w-32  border border-white border-solid rounded-xl bg-[#316fa8] text-white text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none mb-10 pt-2 mt-7"><a href="data:image/png;base64, {{ plot|safe }}" download>
+                        download </a> </h1>
+                </div>
+                    {% endif %}    
+            </div>
+        </div>
     </body>
+    <script>
+        const graph_title = document.getElementById("id_graph_title");
+        const data_labels=document.getElementById("id_data_labels");
+        const data_values=document.getElementById("id_data_values");
+        graph_title.classList.add("w-[36%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md","mt-7", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        data_labels.classList.add("w-[36%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","ml-2","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]");
+        data_values.classList.add("w-[36%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","ml-2","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]");
+        
+    </script>
 </html>
+{% endblock %}
