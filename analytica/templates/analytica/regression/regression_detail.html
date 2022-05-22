@@ -21,7 +21,7 @@
     {% if rg_model.plot %}
         <img src="{{ rg_model.plot.url }}" >
     {% endif %}
-    <h1>accuracy of the model is {{ rg_model.model_accuracy }}</h1>
+    <h1>accuracy of the model is {{ rg_model.model_accuracy | floatformat:3 }}</h1>
 
     <h1>predict label of new data points</h1>
     <form action="{{ rg_model.get_absolute_url }}" method="post">

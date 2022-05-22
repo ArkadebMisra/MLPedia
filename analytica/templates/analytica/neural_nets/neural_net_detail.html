@@ -23,7 +23,7 @@
     {% if nn_model.plot %}
         <img src="{{ nn_model.plot.url }}" >
     {% endif %}
-    <h1>accuracy of the model is {{ nn_model.model_accuracy }}</h1>
+    <h1>accuracy of the model is {{ nn_model.model_accuracy | floatformat:3 }}</h1>
 
     <h1>predict label of new data points</h1>
     <form action="{{ nn_model.get_absolute_url }}" method="post">

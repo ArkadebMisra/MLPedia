@@ -22,7 +22,7 @@
         <img src="{{ lr_model.plot.url }}" >
     {% endif %}
 
-    
+    <h1>accuracy of the model {{ lr_model.model_accuracy | floatformat:3 }} </h1>
 
     <h1>predict label of new data points</h1>
     <form action="{{ lr_model.get_absolute_url }}" method="post">

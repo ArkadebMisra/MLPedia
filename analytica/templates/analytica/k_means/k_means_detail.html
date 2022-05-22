@@ -22,13 +22,13 @@
     <h1>output file: <a href="{{km_model.k_means_output_file.url}}" download>
          download </a> </h1>
 
-    <h1>predict label of new data points</h1>
+    <h1>Assign label of new data points</h1>
     <form action="{{ km_model.get_absolute_url }}" method="post">
         {% csrf_token %}
         {{ form }}
         <input type="submit">
     </form>
-    <h1>the prediction:  {{ prediction }}</h1>
+    <h1>The Assignment:  {{ prediction }}</h1>
 
     <h1>delete this model</h1>
     <a href="{% url 'analytica:k_means_delete' km_model.id km_model.slug %}">delete</a>

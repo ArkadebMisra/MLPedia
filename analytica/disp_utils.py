@@ -290,13 +290,14 @@ def plot_k_means_model(X, km):
 
     plt.switch_backend('AGG')
     plt.figure(facecolor="white")
+    plt.style.use('seaborn')
     ax = plt.subplot()
 
     c, y = km.centroids, km.assigned_labels
-    ax.scatter(X[0:1, :], X[1:2, :], 3, y[0:1, :], cmap='plasma')
+    ax.scatter(X[0:1, :], X[1:2, :], 20, y[0:1, :], cmap='Spectral', edgecolor='k')
     n = [i for i in range(km.k)]
     for i, txt in enumerate(n):
-        ax.annotate(txt, (c[0:1, i:i+1], c[1:2, i:i+1]))
+        ax.annotate(txt, (c[0:1, i:i+1], c[1:2, i:i+1]), fontsize=25)
 
     buffer = BytesIO()
     plt.savefig(buffer, format="png")
