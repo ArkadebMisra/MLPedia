@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -7,97 +10,118 @@
         <title>Document</title>
         <script src="https://cdn.tailwindcss.com"></script>
     </head>
-    <body>
-        <form action="." method="post">
-            <div class="form_group">
-                {{ form.graph_title.label }} {{ form.graph_title }}
-                <br />
-                <br />
-            </div>
+    <body class="bg-slate-300 h-full ">
+        <div class="h-screen w-full relative ">
+            <div class="h-full w-full absolute top-12 text-center"> 
 
-            <!-- <div class="form_group">
-                {{ form.oreantation.label }} {{ form.oreantation }}
-                <br />
-                <br />
-            </div> -->
-
-            <div class="form_group">
-                X Axis {{ form.x_axis_label }}
-                <br />
-                <br />
-            </div>
-    
-            <div class="form_group">
-                Y Axis {{ form.y_axis_label }} {{ form.y_scale }}
-                <br />
-                <br />
-            </div>
-    
-            <div class="form_group">
-                {{ form.number_of_bars.label }} {{ form.number_of_bars }}
-                <br />
-                <br />
-            </div>
-
-            <div class="form_group">
-                {{ form.data_labels.label }} {{ form.data_labels }}
-                <br />
-                <br />
-            </div>
-    
-            <div id="data_form_fields">
-                <div class="form_group" id="line_1_data">
-                    bar 1 data
-                    <p>{{ form.bar1_label.label}} {{ form.bar1_label}}</p>
-                    <p>{{ form.bar1_data_values.label }} {{ form.bar1_data_values }}</p>
-                    <br />
-                    <br />
+                
+                <form action="." method="post">
+                    <div class="form_group text-blue-900 text-xl">
+                        {{ form.graph_title.label }} {{ form.graph_title }}
+                        <br />
+                        <br />
+                    </div>
+                    
+                    <!-- <div class="form_group">
+                        {{ form.oreantation.label }} {{ form.oreantation }}
+                        <br />
+                        <br />
+                    </div> -->
+                    
+                    <div class="form_group text-blue-900 text-xl">
+                        X Axis {{ form.x_axis_label }}
+                        <br />
+                        <br />
+                    </div>
+                    
+                    <div class="form_group text-blue-900 text-xl">
+                        Y Axis {{ form.y_axis_label }} {{ form.y_scale }}
+                        <br />
+                        <br />
+                    </div>
+                    
+                    <div class="form_group text-blue-900 text-xl">
+                        {{ form.number_of_bars.label }} {{ form.number_of_bars }}
+                        <br />
+                        <br />
+                    </div>
+                    
+                    <div class="form_group text-blue-900 text-xl">
+                        {{ form.data_labels.label }} {{ form.data_labels }}
+                        <br />
+                        <br />
+                    </div>
+                    
+                    <div id="data_form_fields">
+                        <div class="form_group text-blue-900 text-xl" id="line_1_data">
+                            <div class="font-semibold">
+                                Bar 1 data
+                            </div>
+                            <p>{{ form.bar1_label.label}} {{ form.bar1_label}}</p>
+                            <p>{{ form.bar1_data_values.label }} {{ form.bar1_data_values }}</p>
+                            <br />
+                            <br />
+                        </div>
+                        
+                        <div class="form_group hidden text-blue-900 text-xl" id="line_2_data">
+                            <div class="font-semibold">
+                                Bar 2 data
+                            </div>
+                            <p>{{ form.bar2_label.label}} {{ form.bar2_label}}</p>
+                            <p>{{ form.bar2_data_values.label }} {{ form.bar2_data_values }}</p>
+                            <br />
+                            <br />
+                        </div>
+                        
+                        <div class="form_group hidden text-blue-900 text-xl" id="line_3_data">
+                            <div class="font-semibold">
+                                Bar 3 data
+                            </div>
+                            <p>{{ form.bar3_label.label}} {{ form.bar3_label}}</p>
+                            <p>{{ form.bar3_data_values.label }} {{ form.bar3_data_values }}</p>
+                            <br />
+                            <br />
+                        </div>
+                        
+                        <div class="form_group hidden text-blue-900 text-xl" id="line_4_data">
+                            <div class="font-semibold">
+                                Bar 4 data
+                            </div>
+                            <p>{{ form.bar4_label.label}} {{ form.bar4_label}}</p>
+                            <p>{{ form.bar4_data_values.label }} {{ form.bar4_data_values }}</p>
+                            <br />
+                            <br />
+                        </div>
+                        
+                        <div class="form_group hidden text-blue-900 text-xl" id="line_5_data">
+                            <div class="font-semibold">
+                                Bar 5 data
+                            </div>
+                            <p>{{ form.bar5_label.label}} {{ form.bar5_label }}</p>
+                            <p>{{ form.bar5_data_values.label }} {{ form.bar5_data_values }}</p>
+                            <br />
+                            <br />
+                        </div>
+                        
+                    </div>
+                    
+                    {% csrf_token %}
+                    <input type="submit" value="draw" class="h-10 w-32  border border-white border-solid rounded-xl bg-[#316fa8] text-white text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none mb-10 cursor-pointer">
+                </form>
+                {% if plot %}
+                <div class=" w-full flex flex-row justify-center">
+                    <img src="data:image/png;base64, {{ plot|safe }}" class="bg-slate-200 drop-shadow-[-10px_10px_5px_rgba(0,0,0,0.25)] rounded-3xl ">
                 </div>
+                <div class=" w-full flex flex-row justify-center">
 
-                <div class="form_group hidden" id="line_2_data">
-                    bar 2 data
-                    <p>{{ form.bar2_label.label}} {{ form.bar2_label}}</p>
-                    <p>{{ form.bar2_data_values.label }} {{ form.bar2_data_values }}</p>
-                    <br />
-                    <br />
+                    <h1 class="h-10 w-32  border border-white border-solid rounded-xl bg-[#316fa8] text-white text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none mb-10 pt-2 mt-7"><a href="data:image/png;base64, {{ plot|safe }}" download>
+                        download </a> </h1>
                 </div>
-
-                <div class="form_group hidden" id="line_3_data">
-                    bar 3 data
-                    <p>{{ form.bar3_label.label}} {{ form.bar3_label}}</p>
-                    <p>{{ form.bar3_data_values.label }} {{ form.bar3_data_values }}</p>
-                    <br />
-                    <br />
-                </div>
-
-                <div class="form_group hidden" id="line_4_data">
-                    bar 4 data
-                    <p>{{ form.bar4_label.label}} {{ form.bar4_label}}</p>
-                    <p>{{ form.bar4_data_values.label }} {{ form.bar4_data_values }}</p>
-                    <br />
-                    <br />
-                </div>
-
-                <div class="form_group hidden" id="line_5_data">
-                    bar 5 data
-                    <p>{{ form.bar5_label.label}} {{ form.bar5_label }}</p>
-                    <p>{{ form.bar5_data_values.label }} {{ form.bar5_data_values }}</p>
-                    <br />
-                    <br />
-                </div>
-
+                        {% endif %}   
+                    
+                    
             </div>
-
-            {% csrf_token %}
-            <input type="submit" value="draw">
-        </form>
-        {% if plot %}
-            <img src="data:image/png;base64, {{ plot|safe }}">
-            <h1><a href="data:image/png;base64, {{ plot|safe }}" download>
-                download </a> </h1>
-        {% endif %}   
-        
-        
+        </div>
         <script>
             const resetForm = (value) => {
                 console.log("Works");
@@ -118,4 +142,43 @@
             };
         </script>
     </body>
+    <script>
+        const graph_title = document.getElementById("id_graph_title");
+        const x_axis_label=document.getElementById("id_x_axis_label");
+        
+        const y_axis_label=document.getElementById("id_y_axis_label");
+        const y_scale=document.getElementById("id_y_scale");
+        const number_of_bars=document.getElementById("id_number_of_bars");
+        const data_labels=document.getElementById("id_data_labels");
+        const bar1_label=document.getElementById("id_bar1_label");
+        const bar1_data_values=document.getElementById("id_bar1_data_values");
+        const bar2_label=document.getElementById("id_bar2_label");
+        const bar2_data_values=document.getElementById("id_bar2_data_values");
+        const bar3_label=document.getElementById("id_bar3_label");
+        const bar3_data_values=document.getElementById("id_bar3_data_values");
+        const bar4_label=document.getElementById("id_bar4_label");
+        const bar4_data_values=document.getElementById("id_bar4_data_values");
+        const bar5_label=document.getElementById("id_bar5_label");
+        const bar5_data_values=document.getElementById("id_bar5_data_values");
+        
+        graph_title.classList.add("w-4/12","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        x_axis_label.classList.add("w-[36%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","ml-2","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]");
+        
+        y_axis_label.classList.add("w-[30%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","mr-2","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]");
+        y_scale.classList.add("w-[6%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]");
+        number_of_bars.classList.add("w-[32%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]");
+        data_labels.classList.add("w-[35%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","my-5","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        bar1_label.classList.add("w-[36%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","my-7","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        bar1_data_values.classList.add("w-[32%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mb-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        bar2_label.classList.add("w-[36%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","my-7","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        bar2_data_values.classList.add("w-[32%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mb-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        bar3_label.classList.add("w-[36%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","my-7","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        bar3_data_values.classList.add("w-[32%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mb-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        bar4_label.classList.add("w-[36%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","my-7","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        bar4_data_values.classList.add("w-[32%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mb-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        bar5_label.classList.add("w-[36%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","my-7","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+        bar5_data_values.classList.add("w-[32%]","h-8", "border-[#7d9cf0]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","mb-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5");
+
+    </script>
 </html>
+{% endblock %}
