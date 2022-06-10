@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
     <h1>{{ pc_model.title }}</h1>
 
     <div>
@@ -22,7 +16,7 @@
         <img src="{{ pc_model.plot.url }}" >
     {% endif %}
 
-    <h1>Accuracy: {{ pc_model.model_accuracy }}</h1>
+    <h1>Accuracy: {{ pc_model.model_accuracy | floatformat:3 }}</h1>
 
     <h1>predict label of new data points</h1>
     <form action="{{ pc_model.get_absolute_url }}" method="post">
@@ -34,6 +28,4 @@
 
     <h1>delete this model</h1>
     <a href="{% url 'analytica:perceptron_delete' pc_model.id pc_model.slug %}">delete</a>
-
-</body>
-</html>
+{% endblock %}

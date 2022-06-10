@@ -57,9 +57,9 @@ def plot_bar_graph(form_data):
     params['data_labels'] = form_data.cleaned_data['data_labels'].split(', ')
     data_labels_len = len(params['data_labels'])
     print(params['data_labels'])
-    width = .30
+    width = .40
     x = np.arange(stop=data_labels_len*2, step=2)
-
+    print(x)
 
     for i in range(1, no_of_bars+1):
         params['bar'+str(i)+'_data_values'] = \

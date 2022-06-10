@@ -104,8 +104,18 @@
                 .setAttribute("style", " transform: translate(0px);");
         });
         </script>
+
+        
+        {% comment %} {% if messages %}
+            <script>
+                {% for message in messages %}
+                    alert("{{ message|safe }}")
+                {% endfor %}
+            </script>
+        {% endif %} {% endcomment %}
+
         <script>
-            feather.replace()
+            feather.replace();
         </script>
     </body>
 </html>
