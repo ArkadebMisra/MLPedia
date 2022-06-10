@@ -42,13 +42,13 @@
                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
             </div>
             <div>
-                <button class=" absolute w-2/12 h-9 border border-white border-solid rounded-xl bg-[#316fa8] text-white bottom-20 lg:bottom-32 left-1/4 lg:left-48 text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none "><a href="{% url 'analytica:perceptron_models_list' %}"> Plot</a></button>
+                <button class=" absolute w-2/12 h-9 border border-white border-solid rounded-xl bg-[#316fa8] text-white bottom-20 lg:bottom-32 left-1/4 lg:left-48 text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none "><a href="{% url 'analytica:perceptron_models_list' %}"> Analyze</a></button>
             </div>
             
         </div>
         <div class="h-[600px] w-1/2 bg-gray-200 relative ">
             <div>
-                <img class="h-[350px] w-[600px] drop-shadow-[-10px_-10px_10px_rgba(0,0,0,0.25)] absolute top-1/4 right-1/3" src="{% static 'img/line_graph.jpg' %}" alt="">
+                <img class="h-[350px] w-[600px] drop-shadow-[-10px_-10px_10px_rgba(0,0,0,0.25)] absolute top-1/4 right-1/3" src="{% static 'img/perceptron.jpg' %}" alt="">
             </div>
             <div class="w-[200px] absolute right-1/3 top-[83%] text-right text-black text-base italic">
                 Line Graph
@@ -63,13 +63,13 @@
     <div class="h-auto w-full flex ">
         <div class="h-[600px] w-7/12 bg-gray-200 relative ">
             
-          <img class="h-[600px] w-full  absolute top-0 " src="{% static 'img/Bar_graph.jpg' %}" alt="">
+          <img class="h-[600px] w-full  absolute top-0 " src="{% static 'img/logistic_regression.jpg' %}" alt="">
             
         </div>
     
         <div class="h-[600px] w-5/12 bg-[#478ac9] relative ">
             <div class=" text-white text-4xl font-semibold top-32 right-1/4 lg:right-48 absolute ">
-                Bar Graph
+                Logistic Regression
             </div>
             <div class="h-[1.5px] w-2/4 bg-white absolute top-52 right-1/4 lg:right-48"></div>
             <div class="absolute top-64 right-1/4 lg:right-48 font-light text-base lg:text-lg text-white h-1/3 w-7/12 text-right">
@@ -78,7 +78,7 @@
                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
             </div>
             <div>
-                <button class=" absolute w-2/12 h-9 border border-white border-solid rounded-xl bg-[#316fa8] text-white bottom-20 lg:bottom-32 right-1/4 lg:right-48 text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none "><a href="{% url 'plotter:draw_bar_graph' %}">Plot</a></button>
+                <button class=" absolute w-2/12 h-9 border border-white border-solid rounded-xl bg-[#316fa8] text-white bottom-20 lg:bottom-32 right-1/4 lg:right-48 text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none "><a href="{% url 'analytica:logistic_regression_models_list' %}">Analyze</a></button>
             </div>
             
         </div>
@@ -86,9 +86,8 @@
     </div>
     <div class="h-[800px] w-full  bg-gray-200 relative ">
         <div class=" w-1/3 h-full relative ">
-            <div class="text-black text-4xl absolute top-[19%] left-[15%] font-semibold ">
-                Scatter <br>
-                Graph
+            <div class="text-black text-4xl absolute top-[23%] left-[15%] font-semibold ">
+                Regression <br>
             </div>
             <div class="h-[1.5px] w-2/4 bg-black absolute top-[36%] left-[15%] "></div>
             <div class="absolute top-[42%] left-[15%] font-light text-base lg:text-lg text-black h-1/3 w-2/3 text-left">
@@ -97,9 +96,9 @@
                 Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
             </div>
             <div>
-                <a href="{% url 'plotter:draw_scatter_graph' %}">
+                <a href="{% url 'analytica:regression_models_list' %}">
                     <button class=" absolute w-3/12 h-9 border border-white border-solid rounded-xl bg-[#316fa8] text-white  lg:bottom-[27%]  lg:left-[15%] text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none ">
-                        Plot
+                        Analyze
                     </button>
                 </a>
             </div>
@@ -109,7 +108,7 @@
             <!-- <img class="h-[450px] w-auto  absolute top-0 drop-shadow-[-8px_-8px_8px_rgba(0,0,0,0.25)] " src="{% static 'img/pie_chart.jpg' %}" alt=""> -->
         <!-- </div> -->
         <div  class=" h-auto w-2/4 absolute top-[23%] right-[4%]">
-            <img class="h-[520px] w-[700px]  absolute top-0 drop-shadow-[-10px_-10px_10px_rgba(0,0,0,0.25)] " src="{% static 'img/scatter.jpg' %}" alt="">
+            <img class="h-[500px] w-[700px]  absolute top-0 drop-shadow-[-10px_-10px_10px_rgba(0,0,0,0.25)] " src="{% static 'img/regression.png' %}" alt="">
             
         </div>
         <div class="w-[200px] h-auto absolute right-[8%]  top-[90%] text-right text-black text-base italic">
@@ -121,12 +120,12 @@
     </div>
     <div class="h-auto w-full flex "></div>
     
-        <div class="h-[700px] w-full relative bg-[#0a1242]" >
-            <img class="h-[700px] w-full absolute bottom-0" src="{% static 'img/pie.jpg' %}" alt="">
-            <div class="h-[700px] w-5/12 absolute right-0 ">
+        <div class="h-[600px] w-full relative bg-[#0a1242]" >
+            <img class="h-[600px] w-full absolute bottom-0" src="{% static 'img/neural_net.jpg' %}" alt="">
+            <div class="h-[600px] w-5/12 absolute right-0 ">
     
                 <div class=" text-white text-4xl font-semibold top-32 right-1/4 lg:right-48 absolute z-10 ">
-                    Pie Graph
+                    Neural Net
                 </div>
                 <div class="h-[1.5px] w-1/4 bg-white absolute top-52 right-1/4 lg:right-48 z-10"></div>
                 <div class="absolute top-64 right-1/4 lg:right-48 font-light text-base lg:text-lg text-white h-1/3 w-7/12 text-right z-10">
@@ -134,7 +133,7 @@
                     sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                     Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
                 </div>
-                <button class=" absolute w-2/12 h-9 border border-white border-solid rounded-xl bg-none text-white bottom-20 lg:bottom-32  right-1/4 lg:right-48 text-center text-sm lg:text-base hover:border-blue-300 "><a href="{% url 'plotter:draw_pie_graph' %}">Plot</a></button>
+                <button class=" absolute w-2/12 h-9 border border-white border-solid rounded-xl bg-none text-white bottom-20 lg:bottom-32  right-1/4 lg:right-48 text-center text-sm lg:text-base hover:border-blue-300 "><a href="{% url 'analytica:neural_net_models_list' %}">Analyze</a></button>
                 
             </div>
         </div>
@@ -142,6 +141,38 @@
        
             
             
+    </div>
+    <div class="h-[800px] w-full  bg-gray-200 relative ">
+        <div class=" w-1/3 h-full relative ">
+            <div class="text-black text-4xl absolute top-[19%] left-[15%] font-semibold ">
+                K Means <br>
+                Cluster
+            </div>
+            <div class="h-[1.5px] w-2/4 bg-black absolute top-[36%] left-[15%] "></div>
+            <div class="absolute top-[42%] left-[15%] font-light text-base lg:text-lg text-black h-1/3 w-2/3 text-left">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            </div>
+            <div>
+                <button class=" absolute w-3/12 h-9 border border-white border-solid rounded-xl bg-[#316fa8] text-white  lg:bottom-[27%]  lg:left-[15%] text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none "><a href="{% url 'analytica:neural_net_models_list' %}">Analyze</a></button>
+            </div>
+    
+        </div>
+        <div class=" h-auto w-1/3 absolute top-[9%] left-[36%]">
+            <img class="h-[450px] w-auto  absolute top-0 drop-shadow-[-8px_-8px_8px_rgba(0,0,0,0.25)] " src="{% static 'img/k_means.jpg' %}" alt="">
+        </div>
+        <div  class=" h-auto w-2/4 absolute top-[23%] right-[3%]">
+            <img class="h-[500px] w-[680px]  absolute top-0 drop-shadow-[-10px_-10px_10px_rgba(0,0,0,0.25)] " src="{% static 'img/k_mean.png' %}" alt="">
+            
+        </div>
+        <div class="w-[200px] h-auto absolute right-[8%]  top-[88%] text-right text-black text-base italic">
+            Lorem Ipsum
+    
+        </div>
+        <div class=" bg-black w-[450px] h-[0.5px] absolute right-[8%]  top-[92%]  ">
+        </div>
+    
     </div>
     <div class=" h-24 w-full bg-zinc-900 text-gray-500 text-center text-4xl font-semibold flex justify-center items-center relative">
         MLPEDIA
