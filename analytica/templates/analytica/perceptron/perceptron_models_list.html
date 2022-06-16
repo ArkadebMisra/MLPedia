@@ -1,3 +1,7 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,15 +10,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body class=" bg-[#a3aacf]">
+    
+        
+        
+        <div> 
+            <div class="h-auto w-[72%] mt-6 mb-5 flex justify-between items-center"> 
 
-    <a href="{% url 'analytica:perceptron_create' %}"><h1>add a new perceptron model</h1></a>
-
-    {% for model in models %}
-        <a href="{{ model.get_absolute_url }}">
-            <h1>{{ model.title }}</h1>
-        </a>
-    {% endfor %}
+                <div class=" text-[#1e3164] text-[40px] font-semibold  h-10 ml-64  ">
+                    
+                    Perceptron Models
+                    
+                </div>
+                <a href="{% url 'analytica:perceptron_create' %}"><button class=" absolute w-[10%] h-10  border border-white border-solid rounded-xl bg-[#1e3164] text-white px-2  text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none ">Add new model</button></a>
+            </div> 
+                
+            <div class="h-full width-full flex flex-col justify-center items-center ">
+                {% for model in models %}
+                <div class="  bg-slate-200 rounded-2xl drop-shadow-lg h-16 w-4/6 my-3 mx-2 flex justify-between ">
+                    
+                    <h1 class="m-4 px-6  text-xl text-[#1e3164] relative">{{ model.title }}</h1>
+                    <a class="m-4  px-7 text-xl text-[#1e3164]" href="{{ model.get_absolute_url }}">
+                        <button class=" absolute w-1/12 h-8 border border-white border-solid rounded-xl bg-[#1e3164] text-white  lg:bottom-[27%]  lg:right-[4%] text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none ">view</button>
+                        
+                    </a>
+                    <a href="{% url 'analytica:perceptron_delete' model.id model.slug %}">Delete</a>
+                </div>
+                {% endfor %}
+            </div> 
+        </div>
     
 </body>
+<script>
+    const success = document.getElementsByClassName("success");
+    
+</script>
 </html>
+{% endblock %}
