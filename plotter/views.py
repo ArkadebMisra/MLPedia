@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse
 from django.http import HttpResponse,HttpResponseRedirect, Http404
+from django.contrib import messages
 
 # Create your views here.
 
@@ -28,8 +29,7 @@ def draw_line_graph(request):
         else:
             form = LineGraphCreateForm(data = request.GET)
     except:
-        return HttpResponseRedirect(
-            reverse('plotter:error', kwargs={'error_from':'line_graph'}))
+        messages.error(request, "please enter the data in correct format")
     return render(request, "plotter/draw_line_graph.html",{
         'form': form,
         'plot': plot,
@@ -47,8 +47,7 @@ def draw_bar_graph(request):
         else:
             form = BarGraphCreateForm(data = request.GET)
     except:
-        return HttpResponseRedirect(
-            reverse('plotter:error', kwargs={'error_from':'bar_graph'}))
+        messages.error(request, "please enter the data in correct format")
     return render(request, "plotter/draw_bar_graph.html",{
         'form': form,
         'plot': plot,
@@ -66,8 +65,7 @@ def draw_scatter_graph(request):
         else:
             form = ScatterGraphCreateForm(data = request.GET)
     except:
-        return HttpResponseRedirect(
-            reverse('plotter:error', kwargs={'error_from':'scatter_graph'}))
+        messages.error(request, "please enter the data in correct format")
     return render(request, "plotter/draw_scatter_graph.html",{
         'form': form,
         'plot': plot,
@@ -85,8 +83,7 @@ def draw_pie_graph(request):
         else:
             form = PieGraphCreateForm(data = request.GET)
     except:
-        return HttpResponseRedirect(
-            reverse('plotter:error', kwargs={'error_from':'pie_graph'}))
+        messages.error(request, "please enter the data in correct format")
     return render(request, "plotter/draw_pie_graph.html",{
         'form': form,
         'plot': plot,

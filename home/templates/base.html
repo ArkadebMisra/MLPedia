@@ -77,11 +77,11 @@
         </div>
 
         {% if messages %}
-            <ul class="messages">
+            <ul class="messages", id="messages">
                 {% for message in messages %}
                 <li class="{{ message.tags }}">
                     {{ message|safe }}
-                    <a href="." class="close">x</a>
+                    <a href="#" class="close" onclick="removeMessage()">x</a>
                 </li>
                 {% endfor %}
             </ul>
@@ -113,6 +113,13 @@
                 {% endfor %}
             </script>
         {% endif %} {% endcomment %}
+        <script>
+            function removeMessage(){
+                let node= document.getElementById("messages");
+                node.querySelectorAll('*').forEach(n => n.remove());
+            }
+        </script>
+        
 
         <script>
             feather.replace();
