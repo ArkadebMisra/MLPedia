@@ -1,9 +1,31 @@
 {% extends "base.html" %}
-{% block title %}Logged out{% endblock %}
+{% load static %}
 {% block content %}
-    <h1>Logged out</h1>
+    <!-- <h1>Logged out</h1>
     <p>
     You have been successfully logged out.
     You can <a href="{% url "login" %}">log-in again</a>.
-    </p>
+    </p> -->
+    <div class="h-auto w-full relative ">
+        <img class="h-[723px] w-full" src="{% static 'img/register_done_backdrop.jpg' %}" alt="">
+        <div class="h-[723px] w-full bg-gray-900 bg-opacity-10 absolute top-0 left-0"></div>
+        <div class="h-5/6 w-3/5 absolute top-[8%] left-[22%] bg-zinc-50 rounded-2xl drop-shadow-lg flex">
+            
+            <img class="h-4/6 absolute top-[20%] left-[30%]  rounded-l-2xl" src="{% static 'img/logout.jpg' %}" alt="">
+            
+        
+            <p class="text-[#324b8f] w-full text-xl font-normal absolute top-[18%] text-center">Your have been successfully logged out.</p>
+            <p class="text-[#324b8f] w-full text-base font-light absolute bottom-[12%] text-center tracking-wider">
+                Now you can 
+                <div class="h-auto w-full absolute bottom-[5%] flex justify-center items-center">
+                    <div class="h-8 w-2/12 bg-[#304d9b] text-zinc-50 mt-5 cursor-pointer hover:bg-[#6482d6] text-center p-0.5">
+                        <a href="{% url "login" %}" >log-in</a> 
+    
+                    </div>
+    
+                </div>
+                
+            </p> 
+        </div>
+    </div>
 {% endblock %}
