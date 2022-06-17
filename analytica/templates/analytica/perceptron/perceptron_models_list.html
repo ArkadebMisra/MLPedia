@@ -31,10 +31,12 @@
                     
                     <h1 class="m-4 px-6  text-xl text-[#1e3164] relative">{{ model.title }}</h1>
                     <a class="m-4  px-7 text-xl text-[#1e3164]" href="{{ model.get_absolute_url }}">
-                        <button class=" absolute w-1/12 h-8 border border-white border-solid rounded-xl bg-[#1e3164] text-white  lg:bottom-[27%]  lg:right-[4%] text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none ">view</button>
+                        <button class=" absolute w-1/12 h-8 border border-white border-solid rounded-xl bg-[#1e3164] text-white  lg:bottom-[27%]  lg:right-[14%] text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none ">View</button>
                         
                     </a>
-                    <a href="{% url 'analytica:perceptron_delete' model.id model.slug %}">Delete</a>
+                    <a class="m-4  px-7 text-xl text-[#1e3164]" href="{% url 'analytica:perceptron_delete' model.id model.slug %}">
+                        <button class=" absolute w-1/12 h-8 border border-white border-solid rounded-xl bg-[#1e3164] text-white  lg:bottom-[27%]  lg:right-[4%] text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none ">Delete</button>
+                    </a>
                 </div>
                 {% endfor %}
             </div> 
