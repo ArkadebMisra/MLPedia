@@ -22,6 +22,14 @@
         {% block css %}
              
         {% endblock %}
+        <style>
+            .success{
+                color: rgb(18, 85, 18);
+            }
+            .error{
+                color: rgb(73, 12, 12);
+            }
+        </style>
         
     </head>
     <body>
@@ -64,12 +72,24 @@
                         id="bar"
                     >
                     <i data-feather="x" class=" h-5 w-5 absolute top-3 right-6 text-gray-500 cursor-pointer hover:text-[#112538]" id="cross"></i>
+                    {% if request.user.is_authenticated %}
+                    <div class="h-auto w-2/3 absolute top-9 left-4 ">
+                        <div class=" font-normal h-9 text-base text-gray-600 hover:text-[#112538] cursor-pointer"><a href={% url "dashboard" %}>Dashboard</a></div>
+                        <div class=" h-[0.5px] w-full mb-3 bg-[rgb(94,135,170)]"></div>
+                        <div class=" font-normal h-9  text-base text-gray-600 hover:text-[#112538] cursor-pointer"><a href= {% url "logout" %}>Log-out</a></div>
+
+                    </div>
+                    
+                    {% else %}
+
                     <div class="h-auto w-2/3 absolute top-9 left-4 ">
                         <div class=" font-normal h-9 text-base text-gray-600 hover:text-[#112538] cursor-pointer"><a href={% url "login" %}>Log-in</a></div>
                         <div class=" h-[0.5px] w-full mb-3 bg-[rgb(94,135,170)]"></div>
                         <div class=" font-normal h-9  text-base text-gray-600 hover:text-[#112538] cursor-pointer"><a href={% url "register" %}>Register</a></div>
 
                     </div>
+
+                    {% endif %}
                     
                 </div>
 
@@ -79,10 +99,13 @@
         {% if messages %}
             <ul class="messages", id="messages">
                 {% for message in messages %}
-                <li class="{{ message.tags }}">
-                    {{ message|safe }}
-                    <a href="#" class="close" onclick="removeMessage()">x</a>
-                </li>
+                <div class="h-auto w-full flex justify-center ">
+
+                    <li class="{{ message.tags }} h-36 w-[30%] bg-[#e9edf8e8] fixed top-[10%] rounded-md shadow-md text-center text-2xl flex justify-center items-center z-20">
+                        {{ message|safe }}
+                        <a href="#" class="close fixed top-24 right-[37%]" onclick="removeMessage()">x</a>
+                    </li>
+                </div>
                 {% endfor %}
             </ul>
         {% endif %}
@@ -106,13 +129,15 @@
         </script>
 
         
-        {% comment %} {% if messages %}
+        <!-- {% comment %} 
+        {% if messages %}
             <script>
                 {% for message in messages %}
                     alert("{{ message|safe }}")
                 {% endfor %}
             </script>
-        {% endif %} {% endcomment %}
+        {% endif %} 
+        {% endcomment %} -->
         <script>
             function removeMessage(){
                 let node= document.getElementById("messages");
