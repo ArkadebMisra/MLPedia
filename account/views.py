@@ -10,9 +10,22 @@ from .models import Profile
 
 @login_required
 def dashboard(request):
+
+    user = request.user
+    no_of_pc = user.perceptron_models_created.count()
+    no_of_lr = user.logistic_regression_models_created.count()
+    no_of_rg = user.regression_models_created.count()
+    no_of_nn = user.neural_net_models_created.count()
+    no_of_km = user.k_means_models_created.count()
     return render(request,
                 'account/dashboard.html',
-                {'section': 'dashboard'})
+                {'section': 'dashboard',
+                'user':user,
+                'no_of_nn':no_of_nn,
+                'no_of_pc':no_of_pc,
+                'no_of_lr':no_of_lr,
+                'no_of_rg':no_of_rg,
+                'no_of_km':no_of_km,})
 
 
 

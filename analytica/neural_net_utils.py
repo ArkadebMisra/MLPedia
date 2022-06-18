@@ -164,6 +164,9 @@ def create_nn_from_description(description, nn_modules = nn_modules_dict):
 
 def process_model_description(model_str):
     s = model_str.split(';')
+    #remove the last element
+    s.pop()
+    print(s)
     processed_description = []
     for i in s:
         processed_description.append(i[1:-1].split(','))

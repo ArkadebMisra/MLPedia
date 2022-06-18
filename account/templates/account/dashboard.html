@@ -2,8 +2,16 @@
 {% block title %}Dashboard{% endblock %}
 {% block content %}
     <h1>Dashboard</h1>
-    <p>Welcome to your dashboard. You can <a href="{% url "edit" %}">edit
+    <p>Welcome <b>{{ user.username }}</b> to your dashboard. You can <a href="{% url "edit" %}">edit
         your profile</a> or <a href="{% url "password_change" %}">change your
         password</a>.
     </p>
+    <img src="{{ user.profile.photo.url }}" style="border-radius: 50%; width: 100px; height: 100px;" >
+    <h1>Your models</h1>
+    <p><b><a href="{% url 'analytica:perceptron_models_list' %}">Perceptron</a></b>  {{ no_of_pc }}</p>
+    <p><b><a href="{% url 'analytica:logistic_regression_models_list' %}">Logistic Regression</a></b>  {{ no_of_lr }}</p>
+    <p><b><a href="{% url 'analytica:regression_models_list' %}">Regression</a></b>  {{ no_of_rg }}</p>
+    <p><b><a href="{% url 'analytica:neural_net_models_list' %}">Neural Networks</a></b>  {{ no_of_nn }}</p>
+    <p><b><a href="{% url 'analytica:k_means_models_list' %}">K Means Clusturs</a></b>  {{ no_of_km }}</p>
+    
 {% endblock %}

@@ -82,8 +82,7 @@ def neural_net_create(request):
         else:
             form = NuralNetCreateForm(data = request.GET)
     except:
-        return HttpResponseRedirect(
-            reverse('plotter:error', kwargs={'error_from':'nn_create'}))
+        messages.error(request, "oops!something went wrong <br>please enter the data in correct format")
     return render(request, "analytica/neural_nets/create_neural_net.html",{
         'form': form,
         'section': 'analytica',
@@ -118,7 +117,8 @@ def neural_net_detail(request, model_id, model):
         else:
             submitted_form = NeuralNetPredictionForm(request.GET)
     except:
-        messages.error(request, "please enter the data in correct format")
+        # messages.error(request, "please enter the data in correct format")
+        messages.error(request, "oops!something went wrong <br>please enter the data in correct format")
     return render(request,'analytica/neural_nets/neural_net_detail.html', 
                     {'nn_model': nn_model, 
                     'form': submitted_form, 
@@ -186,8 +186,9 @@ def regression_create(request):
         else:
             form = RegressionCreateForm(data = request.GET)
     except:
-        return HttpResponseRedirect(
-            reverse('plotter:error', kwargs={'error_from':'regression_create'}))    
+        # return HttpResponseRedirect(
+        #     reverse('plotter:error', kwargs={'error_from':'regression_create'})) 
+        messages.error(request, "oops!something went wrong <br>please enter the data in correct format")   
     return render(request, "analytica/regression/create_regression.html",{
         'form': form,
         'section': 'analytica',
@@ -220,7 +221,8 @@ def regression_detail(request, model_id, model):
         else:
             submitted_form = RegressionPredictionForm(request.GET)
     except:
-        messages.error(request, "please enter the data in correct format")
+        # messages.error(request, "please enter the data in correct format")
+        messages.error(request, "oops!something went wrong <br>please enter the data in correct format")
     return render(request,'analytica/regression/regression_detail.html', 
                     {'rg_model': rg_model, 
                     'form': submitted_form, 
@@ -284,8 +286,9 @@ def k_means_create(request):
         else:
             form = KMeansCreateForm(data = request.GET)
     except:
-        return HttpResponseRedirect(
-            reverse('plotter:error', kwargs={'error_from':'km_create'}))
+        # return HttpResponseRedirect(
+        #     reverse('plotter:error', kwargs={'error_from':'km_create'}))
+        messages.error(request, "oops!something went wrong <br>please enter the data in correct format")
     return render(request, "analytica/k_means/create_k_means.html",{
         'form': form,
         'section': 'analytica',
@@ -318,7 +321,8 @@ def k_means_detail(request, model_id, model):
         else:
             submitted_form = KMeansPredictionForm(request.GET)
     except:
-        messages.error(request, "please enter the data in correct format")
+        # messages.error(request, "please enter the data in correct format")
+        messages.error(request, "oops!something went wrong <br>please enter the data in correct format")
     return render(request,'analytica/k_means/k_means_detail.html', 
                     {'km_model': km_model, 
                     'form': submitted_form, 
@@ -388,8 +392,9 @@ def logistic_regression_create(request):
         else:
             form = LogisticRegressionCreateForm(data = request.GET)
     except:
-        return HttpResponseRedirect(
-            reverse('plotter:error', kwargs={'error_from':'lr_create'}))
+        # return HttpResponseRedirect(
+        #     reverse('plotter:error', kwargs={'error_from':'lr_create'}))
+        messages.error(request, "oops!something went wrong <br>please enter the data in correct format")
     return render(request, "analytica/logistic_regression/create_Logistic_regression.html",{
         'form': form,
         'section': 'analytica',
@@ -423,7 +428,8 @@ def logistic_regression_detail(request, model_id, model):
         else:
             submitted_form = LogisticRegressionPredictionForm(request.GET)
     except:
-        messages.error(request, "please enter the data in correct format")
+        # messages.error(request, "please enter the data in correct format")
+        messages.error(request, "oops!something went wrong <br>please enter the data in correct format")
     return render(request,
                     "analytica/logistic_regression/logistic_regression_detail.html", 
                     {'lr_model': lr_model, 
@@ -490,8 +496,9 @@ def perceptron_create(request):
         else:
             form = PerceptronCreateForm(data = request.GET)
     except:
-        return HttpResponseRedirect(
-            reverse('plotter:error', kwargs={'error_from':'perceptron_create'}))
+        # return HttpResponseRedirect(
+        #     reverse('plotter:error', kwargs={'error_from':'perceptron_create'}))
+        messages.error(request, "oops!something went wrong <br>please enter the data in correct format")
     return render(request, "analytica/perceptron/create_perceptron.html",{
         'form': form,
         'section': 'analytica',
@@ -526,7 +533,8 @@ def perceptron_detail(request, model_id, model):
         else:
             submitted_form = PerceptronPredictionForm(data = request.GET)
     except:
-        messages.error(request, "please enter the data in correct format")
+        # messages.error(request, "please enter the data in correct format")
+        messages.error(request, "oops!something went wrong <br>please enter the data in correct format")
     return render(request,
                     "analytica/perceptron/perceptron_detail.html", 
                     {'pc_model': pc_model, 

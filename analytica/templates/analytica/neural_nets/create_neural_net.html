@@ -3,8 +3,109 @@
 {% block content %}
 <h1>Add a new Neural Network model</h1>
 <form action="." method= "post" enctype="multipart/form-data">
-    {{ form.as_p }}
+    <!-- title
+    model_description
+    features_input
+    labels_input
+    iteration -->
+    <!-- {{ form.as_p }} -->
+    <p>
+        {{ form.title.errors }}
+        {{ form.title.label }}
+        {{ form.title }}
+    </p>
+
+    <p>
+        {{ form.model_description.errors }}
+        <p id="model_desc_view"></p>
+        {{ form.model_description.label }}
+        {{ form.model_description }}<button type="button" onclick="remove_layer()">x</button>
+        <div>
+            Add Linear Layer: 
+            <input type="number" id="layer_in" placeholder="number of inputs to the layer">
+            <input type="number" id="layer_out" placeholder="number of outputs from the layer">
+            <button type="button" onclick="add_linear_layer()">add</button>
+        </div>
+
+        <div>
+            Add Activation Layer: 
+            <button type="button" id="add_relu_btn" onclick="add_activation_layer('ReLU')">ReLU</button>
+            <button type="button" id="add_tanh_btn" onclick="add_activation_layer('Tanh')">Tanh</button>
+        </div>
+
+        <div>
+            Add Output Layer: 
+            <button type="button" id="add_out_layer_btn" onclick="add_output_layer('SoftMax')">SoftMax</button>
+        </div>
+
+    </p>
+
+    <p>
+        {{ form.features_input.errors }}
+        {{ form.features_input.label }}
+        {{ form.features_input }}
+    </p>
+
+    <p>
+        {{ form.labels_input.errors }}
+        {{ form.labels_input.label }}
+        {{ form.labels_input }}
+    </p>
+
+    <p>
+        {{ form.iterations.errors }}
+        {{ form.iterations.label }}
+        {{ form.iterations }}
+    </p>
+
     {% csrf_token %}
     <input type="submit" value="train">
 </form>
+
+<script>
+    model_description = document.getElementById("id_model_description");
+    // model_description.disabled = true;
+    model_description.setAttribute("readonly", "readonly");
+    
+    function update_model_desc_view(){
+        desc_view = document.getElementById('model_desc_view');
+        model_description = document.getElementById("id_model_description");
+        desc_view.innerHTML = model_description.value; 
+    }
+    update_model_desc_view();
+
+    function add_linear_layer(){
+        let layer_in = document.getElementById("layer_in").value;
+        let layer_out = document.getElementById("layer_out").value;
+        model_description = document.getElementById("id_model_description");
+        descr = "[Linear,"+layer_in.toString()+","+layer_out.toString()+"];"
+        model_description.value += descr;
+        update_model_desc_view();
+    }
+
+    function add_activation_layer(activation_func){
+        model_description = document.getElementById("id_model_description");
+        model_description.value += "["+activation_func+"];";
+        update_model_desc_view();        
+    }
+
+    function add_output_layer(out_layer){
+        model_description = document.getElementById("id_model_description");
+        model_description.value += "["+out_layer+"];";
+        update_model_desc_view();
+    }
+
+    function remove_layer(){
+        model_description = document.getElementById("id_model_description");
+        models = model_description.value.split(";");
+        models.pop();
+        models.pop();
+        model_description.value = models.join(";");
+        console.log(models);
+        if(models.length!=0){
+            model_description.value += ";";
+        }
+        update_model_desc_view();
+    }
+</script>
 {% endblock %}
