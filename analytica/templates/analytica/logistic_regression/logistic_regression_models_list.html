@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,15 +9,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body>
+<body class=" bg-[#a3aacf]">
+    <div>
+        <div class="h-auto w-[72%] mt-6 mb-5 flex justify-between items-center"> 
 
-    <a href="{% url 'analytica:logistic_regression_create' %}"><h1>add a new Logistic regression model</h1></a>
+            <div class=" text-[#1e3164] text-[40px] font-semibold  h-10 ml-64  ">
+                
+                Logistic Regression Models
+                
+            </div>
+            <a href="{% url 'analytica:logistic_regression_create' %}"><button class=" absolute w-[10%] h-10  border border-white border-solid rounded-xl bg-[#1e3164] text-white px-2  text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none ">Add new model</button></a>
+        </div> 
 
-    {% for model in models %}
+        
+        <!-- <a href="{% url 'analytica:logistic_regression_create' %}"><h1>add a new Logistic regression model</h1></a> -->
+        
+        {% for model in models %}
         <a href="{{ model.get_absolute_url }}">
             <h1>{{ model.title }}</h1>
         </a>
-    {% endfor %}
-    
+        {% endfor %}
+        
+    </div>
 </body>
 </html>
+{% endblock %}

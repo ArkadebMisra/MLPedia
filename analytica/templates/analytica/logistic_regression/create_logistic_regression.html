@@ -1,3 +1,6 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,12 +9,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<body class="bg-gray-50 font-serif leading-normal tracking-normal">
-    <h1>Logistic Regression</h1>
-    <form action="." method= "post" enctype="multipart/form-data">
+<body class="bg-[#bcc2e0] text-center">
+    <div class=" text-[#1e3164] text-[40px] font-semibold mb-10 h-10 " >
+        Logistic Regression
+    </div>
+    <form class="text-[#1e3164] text-lg " action="." method= "post" enctype="multipart/form-data">
         {{ form.as_p }}
         {% csrf_token %}
-        <input type="submit" value="learn">
+        <input class="h-10 w-32  border border-white border-solid rounded-xl bg-[#1e3164] text-white text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none mb-10 mt-7" type="submit" value="learn">
     </form>
 </body>
+<script>
+    const error_list = document.getElementsByClassName("errorlist");
+    const title = document.getElementById("id_title");
+    const features = document.getElementById("id_features_input");
+    const labels = document.getElementById("id_labels_input");
+    const iterations = document.getElementById("id_iterations");
+    for(let e of error_list){
+        e.classList.add("text-sm", "font-light", "text-[#1e3164]");
+         
+    }
+    title.classList.add("w-[34%]","h-8", "border-[#1e3164]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5","mb-4");
+    features.classList.add("w-[29%]","h-8", "border-[#1e3164]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5","bg-white","mb-4");
+    labels.classList.add("w-[30%]","h-8", "border-[#1e3164]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5","bg-white", "mb-4");
+    iterations.classList.add("w-[31%]","h-8", "border-[#1e3164]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5","bg-white")
+
+</script>
 </html>
+{% endblock %}
