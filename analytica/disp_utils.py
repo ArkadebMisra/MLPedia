@@ -273,9 +273,24 @@ def plot_regression_model(X, y, rg):
     plt.switch_backend('AGG')
     plt.figure(facecolor="white")
     ax = plt.subplot()
-    ax.scatter(X, y, 1, '#ff7f0e')
-    guess = rg.predict(X)
-    ax.scatter(X, guess , 2, '#FF0000')
+    ax.scatter(X, y, 1, c='#BDE7F5')
+    
+    min_X = np.min(X)
+    max_X = np.max(X)
+
+    no_of_rg_line_points = 10
+    
+    rg_line_X = np.linspace(min_X, max_X, no_of_rg_line_points)
+
+    # rg_line_X = np.arange(min_X, max_X, (max_X-min_X)/no_of_rg_line_points)
+    # rg_line_X = rg_line_X.reshape((1, rg_line_X.shape[0]))
+    # guess = rg.predict(X)
+    # ax.scatter(X, guess , 2, '#FF0000')
+
+    guess = rg.predict(rg_line_X.reshape(1, no_of_rg_line_points))
+    ax.plot(rg_line_X, guess.reshape((10,)), c= "#032642", marker='.', linestyle=':')
+    # print(rg_line_X.shape)
+    # print(guess.shape)
 
     buffer = BytesIO()
     plt.savefig(buffer, format="png")

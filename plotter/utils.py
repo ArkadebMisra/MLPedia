@@ -46,7 +46,6 @@ def plot_line_graph(form_data):
 
 
 
-
 def plot_bar_graph(form_data):
     plt.switch_backend('AGG')
     plt.figure(facecolor="white")
@@ -58,7 +57,14 @@ def plot_bar_graph(form_data):
     data_labels_len = len(params['data_labels'])
     print(params['data_labels'])
     width = .40
-    x = np.arange(stop=data_labels_len*2, step=2)
+
+    x = [0]
+    for i in range(1, data_labels_len):
+        x.append(x[-1]+no_of_bars*width+width)
+    x = np.array(x)
+
+    # x = np.arange(data_labels_len)
+    # x = np.arange(stop=data_labels_len*2, step=2) #step=2
     print(x)
 
     for i in range(1, no_of_bars+1):
@@ -87,7 +93,8 @@ def plot_bar_graph(form_data):
             width = width,
             label=params['bar'+str(i)+'_label'])
 
-    plt.xticks(x + (width*no_of_bars)/2,params['data_labels'])
+    # plt.xticks(x , params['data_labels'])
+    plt.xticks(x + ((width*no_of_bars)/2) - width/2 ,params['data_labels'])
 
 
     
@@ -102,6 +109,7 @@ def plot_bar_graph(form_data):
     graph = graph.decode('utf-8')
     buffer.close()
     return graph
+
 
 
 def plot_scatter_graph(form_data):
