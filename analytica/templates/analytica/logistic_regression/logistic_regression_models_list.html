@@ -23,12 +23,41 @@
 
         
         <!-- <a href="{% url 'analytica:logistic_regression_create' %}"><h1>add a new Logistic regression model</h1></a> -->
-        
-        {% for model in models %}
-        <a href="{{ model.get_absolute_url }}">
-            <h1>{{ model.title }}</h1>
-        </a>
-        {% endfor %}
+        {% if models %}
+
+        <div class="h-full width-full flex flex-col justify-center items-center ">
+            {% for model in models %}
+            <div class="  bg-slate-200 rounded-2xl drop-shadow-lg h-16 w-4/6 my-3 mx-2 flex justify-between ">
+                
+                <h1 class="m-4 px-6  text-xl text-[#1e3164] relative">{{ model.title }}</h1>
+                <a class="m-4  px-7 text-xl text-[#1e3164]" href="{{ model.get_absolute_url }}">
+                    <button class=" absolute w-1/12 h-8 border border-white border-solid rounded-xl bg-[#1e3164] text-white  lg:bottom-[27%]  lg:right-[14%] text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none ">view</button>
+                    
+                </a>
+                <a class="m-4  px-7 text-xl text-[#1e3164]" href="{% url 'analytica:logistic_regression_delete' model.id model.slug %}">
+                    <button class=" absolute w-1/12 h-8 border border-white border-solid rounded-xl bg-[#1e3164] text-white  lg:bottom-[27%]  lg:right-[4%] text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none ">Delete</button>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div >
+            <div class="h-4/6 w-4/6 absolute top-[20%] left-[16%] bg-zinc-50 rounded-2xl drop-shadow-lg flex">
+            
+                <img class="h-4/6 absolute top-[20%] left-[25%]   rounded-l-2xl" src="{% static 'img/no_models.jpg' %}" alt="">
+                
+            
+                <p class="text-[#324b8f] w-full text-xl font-normal absolute top-[10%] text-center">No models found!</p>
+                <p class="text-[#324b8f] w-full text-base font-medium absolute bottom-[8%] text-center tracking-wider cursor-pointer hover:text-[#092164]">
+                    <a href="{% url 'analytica:logistic_regression_create' %}">
+                        Add new model
+                    </a>
+                    
+                </p> 
+            </div>
+        </div>
+        {% endif %} 
+       
         
     </div>
 </body>
