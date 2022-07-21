@@ -1,17 +1,139 @@
 {% extends "base.html" %}
-{% block title %}Dashboard{% endblock %}
+{% load static %}
 {% block content %}
-    <h1>Dashboard</h1>
-    <p>Welcome <b>{{ user.username }}</b> to your dashboard. You can <a href="{% url "edit" %}">edit
-        your profile</a> or <a href="{% url "password_change" %}">change your
-        password</a>.
-    </p>
-    <img src="{{ user.profile.photo.url }}" style="border-radius: 50%; width: 100px; height: 100px;" >
-    <h1>Your models</h1>
-    <p><b><a href="{% url 'analytica:perceptron_models_list' %}">Perceptron</a></b>  {{ no_of_pc }}</p>
-    <p><b><a href="{% url 'analytica:logistic_regression_models_list' %}">Logistic Regression</a></b>  {{ no_of_lr }}</p>
-    <p><b><a href="{% url 'analytica:regression_models_list' %}">Regression</a></b>  {{ no_of_rg }}</p>
-    <p><b><a href="{% url 'analytica:neural_net_models_list' %}">Neural Networks</a></b>  {{ no_of_nn }}</p>
-    <p><b><a href="{% url 'analytica:k_means_models_list' %}">K Means Clusturs</a></b>  {{ no_of_km }}</p>
+    <div class="h-screen w-full flex">
+
+        <div class="h-auto w-[12%] bg-[#d0d7fc] shadow-inner">
+            <div class=" h-auto w-[12%] absolute flex flex-col items-center">
+                
+                <img src="{{ user.profile.photo.url }}" class=" h-20 w-20 border-0 rounded-full relative top-8 " >
+                <div class=" text-[#121230] text-[20px] font-semibold h-10 relative top-10 ">{{ user.username }}</div>
+                <div class="relative top-12">
+                    <div class=" text-[#121230] hover:text-[#643ac5] flex cursor-pointer">
+                        <i data-feather="grid" class=" h-5 w-5 mr-2 cursor-pointer"></i>
+                        <div class=" text-base font-normal cursor-pointer">
+                            Dashboard
+                            
+                        </div>
+                        <i data-feather="chevron-down" class="h-4 w-4 ml-1 mt-1" id="menu_down"></i>
+                        <i data-feather="chevron-up" class="h-4 w-4 ml-1 mt-1 hidden" id="menu_up"></i>
+                    </div>
+                    <div class="cursor-pointer relative left-5 hidden text-sm" id="dashboard_menu">
+                        <a href="{% url "edit" %}">
+
+                            <div class="text-[#2b3168] hover:text-[#6f4eb6] mt-3 flex">
+                                <i data-feather="edit-2" class="h-3 w-3 mr-1 mt-1"></i>
+                                Edit Profile
+                            </div>
+                        </a>
+                        <a href="{% url "password_change" %}">
+
+                            <div class="text-[#2b3168] hover:text-[#6f4eb6] mt-3 flex">
+                                <i data-feather="edit-2" class="h-3 w-3 mr-1 mt-1"></i>
+                                Change Password
+                            </div>
+                        </a>
+
+                    </div>
+                    <div class=" text-base font-normal text-[#121230] hover:text-[#643ac5] flex cursor-pointer  mt-5">
+                        <i data-feather="bar-chart-2" class=" h-5 w-5 mr-2 cursor-pointer" ></i>
+                        <a href={% url 'plotter:plotter_index' %}>Plotter</a>
+                        
+                    </div>
+                    <div class=" text-base font-normal text-[#121230] hover:text-[#643ac5] flex cursor-pointer mt-5">
+                        <i data-feather="activity" class=" h-5 w-5 mr-2 cursor-pointer"></i>
+                        <a href={% url 'analytica:analytica_index' %}>Analytica</a>
+
+                    </div> 
+                </div>
+            </div>
+        </div>
+        <div class=" h-auto w-[88%] bg-[#adb9f5] ">
+            
+            <div class="absolute">
+
+                
+                <div class=" text-[#132042] text-[30px] font-semibold mb-8 h-10 relative top-4 ml-10 " >
+                    Welcome!
+                </div>
+                <h1 class=" text-[#132042] text-[20px] font-semibold mb-10 h-10 ml-10 ">Your models</h1>
+                <div class=" grid grid-cols-3 gap-x-24 gap-y-10 ml-10">
+
+                    <div class="bg-[#e6e9fa] text-center h-44 w-[300px] rounded-2xl drop-shadow-[10px_10px_10px_rgba(0,0,0,0.25)]">
+                        <div class=" text-[#070f3d] mt-10 text-xl font-semibold">
+
+                            <a href="{% url 'analytica:perceptron_models_list' %}">Perceptron</a>
+                        </div>
+                        <div class=" text-[#070f3d] text-base font-medium mt-4">
+                            Number Of Models:
+                            {{ no_of_pc }}
+                        </div>
+                    </div>
+                    <div class="bg-[#e6e9fa] text-center h-44 w-[300px] rounded-2xl drop-shadow-[10px_10px_10px_rgba(0,0,0,0.25)]">
+                        <div class=" text-[#070f3d] mt-10 text-xl font-semibold">
+
+                            <a href="{% url 'analytica:logistic_regression_models_list' %}">Logistic Regression</a>
+                        </div>
+                        <div class=" text-[#070f3d] text-base font-medium mt-4">
+                            Number Of Models:
+                            {{ no_of_lr }}
+                        </div>
+                    </div>
+                    <div class="bg-[#e6e9fa] text-center h-44 w-[300px] rounded-2xl drop-shadow-[10px_10px_10px_rgba(0,0,0,0.25)]">
+                        <div class=" text-[#070f3d] mt-10 text-xl font-semibold">
+
+                            <a href="{% url 'analytica:regression_models_list' %}">Regression</a>
+                        </div>
+                        <div class=" text-[#070f3d] text-base font-medium mt-4">
+                            Number Of Models:
+                            {{ no_of_rg }}
+                        </div>
+                    </div>
+                    <div class="bg-[#e6e9fa] text-center h-44 w-[300px] rounded-2xl drop-shadow-[10px_10px_10px_rgba(0,0,0,0.25)]">
+                        <div class=" text-[#070f3d] mt-10 text-xl font-semibold">
+
+                            <a href="{% url 'analytica:neural_net_models_list' %}">Neural Networks</a>
+                        </div>
+                        <div class=" text-[#070f3d] text-base font-medium mt-4">
+                            Number Of Models:
+                            {{ no_of_nn }}
+                        </div>
+                    </div>
+                    <div class="bg-[#e6e9fa] text-center h-44 w-[300px] rounded-2xl drop-shadow-[10px_10px_10px_rgba(0,0,0,0.25)]">
+                        <div class=" text-[#070f3d] mt-10 text-xl font-semibold">
+
+                            <a href="{% url 'analytica:k_means_models_list' %}">K Means Clusturs</a>
+                        </div>
+                        <div class=" text-[#070f3d] text-base font-medium mt-4">
+                            Number Of Models:
+                            {{ no_of_km }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+        </div>
+    </div>
+    <script>
+        feather.replace();
+    </script>
+    <script>
+        const menu_down = document.getElementById("menu_down");
+        const menu_up = document.getElementById("menu_up");
+        menu_down.onclick = function(){
+            const dashboard_menu = document.getElementById("dashboard_menu");
+            dashboard_menu.classList.remove("hidden");
+            menu_down.classList.add("hidden");
+            menu_up.classList.remove("hidden")
+
+        }
+        menu_up.onclick = function(){
+            const dashboard_menu = document.getElementById("dashboard_menu");
+            dashboard_menu.classList.add("hidden");
+            menu_down.classList.remove("hidden");
+            menu_up.classList.add("hidden")
+
+        }
+    </script>
     
 {% endblock %}
