@@ -1,66 +1,71 @@
-<!-- {% extends "base.html" %}
-
-{% block content %} -->
-<h1>Add a new Neural Network model</h1>
-<form action="." method= "post" enctype="multipart/form-data">
-    <!-- title
-    model_description
-    features_input
-    labels_input
-    iteration -->
-    <!-- {{ form.as_p }} -->
-    <p>
-        {{ form.title.errors }}
-        {{ form.title.label }}
-        {{ form.title }}
-    </p>
-
-    <p>
-        {{ form.model_description.errors }}
-        <p id="model_desc_view"></p>
-        {{ form.model_description.label }}
-        {{ form.model_description }}<button type="button" onclick="remove_layer()">x</button>
-        <div>
-            Add Linear Layer: 
-            <input type="number" id="layer_in" placeholder="number of inputs to the layer">
-            <input type="number" id="layer_out" placeholder="number of outputs from the layer">
-            <button type="button" onclick="add_linear_layer()">add</button>
-        </div>
-
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<body class=" bg-[#bcc2e0] text-center">
+    
+     <div class=" text-[#1e3164] text-[40px] font-semibold mb-10 h-10  mt-2" >
+        Neural Network
+    </div>
+    <form action="." method= "post" enctype="multipart/form-data">
+        <!-- title
+            model_description
+            features_input
+            labels_input
+            iteration -->
+            <!-- {{ form.as_p }} -->
+            <p>
+                {{ form.title.errors }}
+                {{ form.title.label }}
+                {{ form.title }}
+            </p>
+            
+            <p>
+                {{ form.model_description.errors }}
+                <p id="model_desc_view"></p>
+                {{ form.model_description.label }}
+                {{ form.model_description }}<button type="button" onclick="remove_layer()" class="h-8 w-10  border border-white border-solid rounded-xl bg-[#1e3164] text-white text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none mb-4 ml-2">x</button>
+                <div>
+                    Add Linear Layer: 
+                    <input type="number" id="layer_in" placeholder="number of inputs to the layer" >
+                    <input type="number" id="layer_out" placeholder="number of outputs from the layer">
+                    <button type="button" onclick="add_linear_layer()" class="h-8 w-14  border border-white border-solid rounded-xl bg-[#1e3164] text-white text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none mb-4 ml-1">add</button>
+                </div>
+                
         <div>
             Add Activation Layer: 
-            <button type="button" id="add_relu_btn" onclick="add_activation_layer('ReLU')">ReLU</button>
-            <button type="button" id="add_tanh_btn" onclick="add_activation_layer('Tanh')">Tanh</button>
+            <button type="button" id="add_relu_btn" onclick="add_activation_layer('ReLU')" class="h-8 w-[18%]  border border-white border-solid rounded-xl bg-[#1e3164] text-white text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none mb-4 ml-2">ReLU</button>
+            <button type="button" id="add_tanh_btn" onclick="add_activation_layer('Tanh')" class="h-8 w-[18%]  border border-white border-solid rounded-xl bg-[#1e3164] text-white text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none mb-4 ml-2">Tanh</button>
         </div>
-
+        
         <div>
             Add Output Layer: 
-            <button type="button" id="add_out_layer_btn" onclick="add_output_layer('SoftMax')">SoftMax</button>
+            <button type="button" id="add_out_layer_btn" onclick="add_output_layer('SoftMax')" class="h-8 w-[38%]  border border-white border-solid rounded-xl bg-[#1e3164] text-white text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none mb-4 ml-2">SoftMax</button>
         </div>
-
+        
     </p>
-
+    
     <p>
         {{ form.features_input.errors }}
         {{ form.features_input.label }}
         {{ form.features_input }}
     </p>
-
+    
     <p>
         {{ form.labels_input.errors }}
         {{ form.labels_input.label }}
         {{ form.labels_input }}
     </p>
-
+    
     <p>
         {{ form.iterations.errors }}
         {{ form.iterations.label }}
         {{ form.iterations }}
     </p>
-
+    
     {% csrf_token %}
-    <input type="submit" value="train">
+    <input type="submit" value="train" class="h-8 w-[12%]  border border-white border-solid rounded-xl bg-[#1e3164] text-white text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none mb-4 ml-2 mt-5">
 </form>
+</body>
 
 <script>
     model_description = document.getElementById("id_model_description");
@@ -108,4 +113,30 @@
         update_model_desc_view();
     }
 </script>
-<!-- {% endblock %} -->
+<script>
+    const error_list = document.getElementsByClassName("errorlist");
+    const title = document.getElementById("id_title");
+    const description = document.getElementById("id_model_description");
+    const model_desc_view = document.getElementById("model_desc_view");
+    const l_in = document.getElementById("layer_in");
+    const l_out = document.getElementById("layer_out");
+    const features = document.getElementById("id_features_input");
+    const labels = document.getElementById("id_labels_input");
+    const iterations = document.getElementById("id_iterations");
+    console.log(l_in);
+    for(let e of error_list){
+        e.classList.add("text-sm", "font-light", "text-[#1e3164]");
+         
+    }
+    title.classList.add("w-[44%]","h-8", "border-[#1e3164]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5","mb-4");
+    description.classList.add("w-[35%]","h-8", "border-[#1e3164]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5","mb-4");
+    
+    model_desc_view.classList.add("text-sm", "font-light", "text-[#1e3164]");
+    l_in.classList.add("w-[17%]","h-8", "border-[#1e3164]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5","mb-4");
+    l_out.classList.add("w-[18%]","h-8", "border-[#1e3164]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5","mb-4");
+    features.classList.add("w-[41%]","h-8", "border-[#1e3164]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5","bg-white","mb-4");
+    labels.classList.add("w-[42%]","h-8", "border-[#1e3164]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5","bg-white", "mb-4");
+    iterations.classList.add("w-[42%]","h-8", "border-[#1e3164]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5","bg-white")
+
+</script>
+{% endblock %}
