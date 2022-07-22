@@ -11,10 +11,15 @@
             Visualize Your Data
         </div>
         <div class=" text-base lg:text-xl font-serif h-1/2 absolute top-44 left-12 ">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br>
+            By using plotting techniques like line graphs, bar graphs,<br> 
+            scatter plots and pie chart visualize your data and
+            <br>understand trends, outliers, and patterns in data.
+            
+            
+            {% comment %} Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br>
             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
-            ut aliquip ex ea commodo consequat. 
+            ut aliquip ex ea commodo consequat.  {% endcomment %}
             
 
         </div>
@@ -28,9 +33,8 @@
         </div>
         <div class="h-[1.5px] w-1/4 bg-white absolute top-52 left-1/4 lg:left-48"></div>
         <div class="absolute top-64 left-1/4 lg:left-48 font-light text-base lg:text-lg text-white h-1/3 w-7/12">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br>
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            A line graph is a graph that is used to display change 
+            in data as a series of data points connected by straight line segments on two axes.
         </div>
         <div>
             <button class=" absolute w-2/12 h-9 border border-white border-solid rounded-xl bg-[#316fa8] text-white bottom-20 lg:bottom-32 left-1/4 lg:left-48 text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none "><a href="{% url 'plotter:draw_line_graph' %}"> Plot</a></button>
@@ -64,9 +68,9 @@
         </div>
         <div class="h-[1.5px] w-2/4 bg-white absolute top-52 right-1/4 lg:right-48"></div>
         <div class="absolute top-64 right-1/4 lg:right-48 font-light text-base lg:text-lg text-white h-1/3 w-7/12 text-right">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            A bar chart or bar graph is a chart or graph that presents 
+            categorical data with rectangular bars with heights or lengths 
+            proportional to the values that they represent .
         </div>
         <div>
             <button class=" absolute w-2/12 h-9 border border-white border-solid rounded-xl bg-[#316fa8] text-white bottom-20 lg:bottom-32 right-1/4 lg:right-48 text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none "><a href="{% url 'plotter:draw_bar_graph' %}">Plot</a></button>
@@ -78,14 +82,13 @@
 <div class="h-[800px] w-full  bg-gray-200 relative ">
     <div class=" w-1/3 h-full relative ">
         <div class="text-black text-4xl absolute top-[19%] left-[15%] font-semibold ">
-            Scatter <br>
-            Graph
+            Scatter Plot
         </div>
-        <div class="h-[1.5px] w-2/4 bg-black absolute top-[36%] left-[15%] "></div>
-        <div class="absolute top-[42%] left-[15%] font-light text-base lg:text-lg text-black h-1/3 w-2/3 text-left">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+        <div class="h-[1.5px] w-2/4 bg-black absolute top-[30%] left-[15%] "></div>
+        <div class="absolute top-[37%] left-[15%] font-light text-base lg:text-lg text-black h-1/3 w-2/3 text-left">
+            A scatter plot is a type of plot or mathematical diagram 
+            using Cartesian coordinates to display values 
+            for typically two variables for a set of data.
         </div>
         <div>
             <a href="{% url 'plotter:draw_scatter_graph' %}">
@@ -104,7 +107,7 @@
         
     </div>
     <div class="w-[200px] h-auto absolute right-[8%]  top-[90%] text-right text-black text-base italic">
-        Scatter Chart
+        Scatter Plot
 
     </div>
     <div class=" bg-black w-[450px] h-[0.5px] absolute right-[8%]  top-[94%]  ">
@@ -117,15 +120,16 @@
         <div class="h-[700px] w-5/12 absolute right-0 ">
 
             <div class=" text-white text-4xl font-semibold top-32 right-1/4 lg:right-48 absolute z-10 ">
-                Pie Graph
+                Pie Chart
             </div>
             <div class="h-[1.5px] w-1/4 bg-white absolute top-52 right-1/4 lg:right-48 z-10"></div>
             <div class="absolute top-64 right-1/4 lg:right-48 font-light text-base lg:text-lg text-white h-1/3 w-7/12 text-right z-10">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                A pie chart is a circular statistical graphic, 
+                <br>which is divided into slices to illustrate numerical proportion. 
+                In a pie chart, the arc length of each slice 
+                is proportional to the quantity it represents. 
             </div>
-            <button class=" absolute w-2/12 h-9 border border-white border-solid rounded-xl bg-none text-white bottom-20 lg:bottom-32  right-1/4 lg:right-48 text-center text-sm lg:text-base hover:border-blue-300 "><a href="{% url 'plotter:draw_pie_graph' %}">Plot</a></button>
+            <a href="{% url 'plotter:draw_pie_graph' %}"><button class=" absolute w-2/12 h-9 border border-white border-solid rounded-xl bg-none text-white bottom-20 lg:bottom-32  right-1/4 lg:right-48 text-center text-sm lg:text-base hover:border-blue-300 ">Plot</button></a>
             
         </div>
     </div>

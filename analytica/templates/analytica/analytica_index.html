@@ -20,10 +20,8 @@
                 Analytica
             </div>
             <div class=" text-base lg:text-xl font-serif h-1/2 absolute top-44 left-12 ">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br>
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
-                ut aliquip ex ea commodo consequat. 
+                Analyze your data by using powerfull machine learning tools.
+                <br>Use supervised and unsupervised learning techniques to <br>analyze a wide variety of data
                 
     
             </div>
@@ -37,9 +35,8 @@
             </div>
             <div class="h-[1.5px] w-1/4 bg-white absolute top-52 left-1/4 lg:left-48"></div>
             <div class="absolute top-64 left-1/4 lg:left-48 font-light text-base lg:text-lg text-white h-1/3 w-7/12">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br>
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                The Perceptron is an algorithm for supervised learning of binary classifiers.
+                Apply perceptron on linearly seperable data to do binary classifications.
             </div>
             <div>
                 <button class=" absolute w-2/12 h-9 border border-white border-solid rounded-xl bg-[#316fa8] text-white bottom-20 lg:bottom-32 left-1/4 lg:left-48 text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none "><a href="{% url 'analytica:perceptron_models_list' %}"> Analyze</a></button>
@@ -51,7 +48,7 @@
                 <img class="h-[350px] w-[600px] drop-shadow-[-10px_-10px_10px_rgba(0,0,0,0.25)] absolute top-1/4 right-1/3" src="{% static 'img/perceptron.jpg' %}" alt="">
             </div>
             <div class="w-[200px] absolute right-1/3 top-[83%] text-right text-black text-base italic">
-                Line Graph
+                Perceptron
     
             </div>
             <div class=" bg-black w-[350px] h-[0.5px] absolute top-[88%] right-1/3 ">
@@ -73,9 +70,11 @@
             </div>
             <div class="h-[1.5px] w-2/4 bg-white absolute top-52 right-1/4 lg:right-48"></div>
             <div class="absolute top-64 right-1/4 lg:right-48 font-light text-base lg:text-lg text-white h-1/3 w-7/12 text-right">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                Apply Logistic Regression for binary classification when 
+                the the data is not linearly seperable 
+                and perceptron fails to classify correctly. 
+                Capture the underlying uncertainty of the data by
+                using Logistic Regression.
             </div>
             <div>
                 <button class=" absolute w-2/12 h-9 border border-white border-solid rounded-xl bg-[#316fa8] text-white bottom-20 lg:bottom-32 right-1/4 lg:right-48 text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none "><a href="{% url 'analytica:logistic_regression_models_list' %}">Analyze</a></button>
@@ -91,9 +90,8 @@
             </div>
             <div class="h-[1.5px] w-2/4 bg-black absolute top-[36%] left-[15%] "></div>
             <div class="absolute top-[42%] left-[15%] font-light text-base lg:text-lg text-black h-1/3 w-2/3 text-left">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                Model the relationship between a dependent  and independent variables 
+                with one or more independent variables. Predict continuous data with regression model. 
             </div>
             <div>
                 <a href="{% url 'analytica:regression_models_list' %}">
@@ -112,7 +110,7 @@
             
         </div>
         <div class="w-[200px] h-auto absolute right-[8%]  top-[90%] text-right text-black text-base italic">
-            Scatter Chart
+            Regression
     
         </div>
         <div class=" bg-black w-[450px] h-[0.5px] absolute right-[8%]  top-[94%]  ">
@@ -129,9 +127,8 @@
                 </div>
                 <div class="h-[1.5px] w-1/4 bg-white absolute top-52 right-1/4 lg:right-48 z-10"></div>
                 <div class="absolute top-64 right-1/4 lg:right-48 font-light text-base lg:text-lg text-white h-1/3 w-7/12 text-right z-10">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+                    Apply Neural Networks to your data to do <br>multi-class classification and model 
+                    arbitrarily complex linearly unseperable data.
                 </div>
                 <button class=" absolute w-2/12 h-9 border border-white border-solid rounded-xl bg-none text-white bottom-20 lg:bottom-32  right-1/4 lg:right-48 text-center text-sm lg:text-base hover:border-blue-300 "><a href="{% url 'analytica:neural_net_models_list' %}">Analyze</a></button>
                 
@@ -145,14 +142,12 @@
     <div class="h-[800px] w-full  bg-gray-200 relative ">
         <div class=" w-1/3 h-full relative ">
             <div class="text-black text-4xl absolute top-[19%] left-[15%] font-semibold ">
-                K Means <br>
-                Cluster
+                K Means Cluster
             </div>
-            <div class="h-[1.5px] w-2/4 bg-black absolute top-[36%] left-[15%] "></div>
-            <div class="absolute top-[42%] left-[15%] font-light text-base lg:text-lg text-black h-1/3 w-2/3 text-left">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            <div class="h-[1.5px] w-2/4 bg-black absolute top-[30%] left-[15%] "></div>
+            <div class="absolute top-[37%] left-[15%] font-light text-base lg:text-lg text-black h-1/3 w-2/3 text-left">
+                Do supervised learning using K-Means clusturing. Catagorize your data and 
+                get useful insights by applying K-Means clusturing.
             </div>
             <div>
                 <button class=" absolute w-3/12 h-9 border border-white border-solid rounded-xl bg-[#316fa8] text-white  lg:bottom-[27%]  lg:left-[15%] text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none "><a href="{% url 'analytica:k_means_models_list' %}">Analyze</a></button>
@@ -167,7 +162,7 @@
             
         </div>
         <div class="w-[200px] h-auto absolute right-[8%]  top-[88%] text-right text-black text-base italic">
-            Lorem Ipsum
+            K Means Cluster
     
         </div>
         <div class=" bg-black w-[450px] h-[0.5px] absolute right-[8%]  top-[92%]  ">

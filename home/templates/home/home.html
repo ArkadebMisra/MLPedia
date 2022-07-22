@@ -13,13 +13,16 @@
         </div>
         <div class=" text-base lg:text-xl font-serif h-1/2 absolute top-44 left-12 ">
             Welcome to MLPedia! <br>
-            Learn useful insight by visualizing
+            Learn useful insight by visualizing your data
             and by applying powerful Machine Learning algorithms
-            to your data. We aim to equip you with powerful tools for free 
+            to your data. 
+            
+            
+            {% comment %} We aim to equip you with powerful tools for free 
             to help you achive your goals in various fields like Business, Social Media, 
             Healthcare etc. Moreover it's our dream to beacome a playground for students
             where the can explore these tools, learn and grow interest in the field of
-            Machine Learning. 
+            Machine Learning.  {% endcomment %}
             <!-- Lorem ipsum dolor sit amet, consectetur adipiscing elit, <br>
             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
             Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
@@ -33,13 +36,18 @@
 
     <div class="h-[600px] w-1/2 bg-[#478ac9] relative ">
         <div class=" text-white text-4xl font-semibold top-32 left-1/4 lg:left-48 absolute ">
-            PLOT
+            PLOTTER
         </div>
         <div class="h-[1.5px] w-1/4 bg-white absolute top-52 left-1/4 lg:left-48"></div>
         <div class="absolute top-64 left-1/4 lg:left-48 font-light text-base lg:text-lg text-white h-1/3 w-7/12">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br>
+            Plotting is by far the most prevalant method <br> for analyzing, correlating,
+            condensing, and presenting scientific data.
+            Visualize your data by using various plotting techniques.
+            
+            {% comment %} Lorem ipsum dolor sit amet, consectetur adipiscing elit,<br>
             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut 
+            aliquip ex ea commodo consequat.  {% endcomment %}
         </div>
         <div>
             <a href={% url 'plotter:plotter_index' %}><button class=" absolute w-2/12 h-9 border border-white border-solid rounded-xl bg-[#316fa8] text-white bottom-20 lg:bottom-32 left-1/4 lg:left-48 text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none ">Learn More</button></a>
@@ -51,7 +59,7 @@
             <img class="h-[350px] w-[500px] drop-shadow-[-10px_-10px_10px_rgba(0,0,0,0.25)] absolute top-1/4 right-2/4" src="{% static 'img/plotting.jpg' %}" alt="">
         </div>
         <div class="w-[200px] absolute right-2/4 top-[83%] text-right text-black text-base italic">
-            Lorem Ipsum
+            Plotter
 
         </div>
         <div class=" bg-black w-[350px] h-[0.5px] absolute top-[88%] right-2/4 ">
@@ -73,9 +81,14 @@
         </div>
         <div class="h-[1.5px] w-2/4 bg-white absolute top-52 right-1/4 lg:right-48"></div>
         <div class="absolute top-64 right-1/4 lg:right-48 font-light text-base lg:text-lg text-white h-1/3 w-7/12 text-right">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+            Analyze your data by using powerfull<br> machine learning tools.
+            Use supervised and unsupervised learning techniques to analize a wide variety of data
+            
+            
+            {% comment %} Lorem ipsum dolor sit amet, consectetur adipiscing elit,
             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris 
+            nisi ut aliquip ex ea commodo consequat.  {% endcomment %}
         </div>
         <div>
             <a href={% url 'analytica:analytica_index' %}><button class=" absolute w-2/12 h-9 border border-white border-solid rounded-xl bg-[#316fa8] text-white bottom-20 lg:bottom-32 right-1/4 lg:right-48 text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none ">Learn More</button></a>
@@ -90,11 +103,14 @@
             BLOG <br>
             
         </div>
-        <div class="h-[1.5px] w-2/4 bg-black absolute top-[36%] left-[15%] "></div>
-        <div class="absolute top-[42%] left-[15%] font-light text-base lg:text-lg text-black h-1/3 w-2/3 text-left">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        <div class="h-[1.5px] w-2/4 bg-black absolute top-[30%] left-[15%] "></div>
+        <div class="absolute top-[37%] left-[15%] font-light text-base lg:text-lg text-black h-1/3 w-2/3 text-left">
+            Keep up with latest data analytic and ML trends and news.
+            
+            {% comment %} Lorem ipsum dolor sit amet, consectetur adipiscing elit,
             sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi 
+            ut aliquip ex ea commodo consequat.  {% endcomment %}
         </div>
         <div>
             <a href={% url 'blog:post_list' %}><button class=" absolute w-3/12 h-9 border border-white border-solid rounded-xl bg-[#316fa8] text-white  lg:bottom-[27%]  lg:left-[15%] text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none ">Learn More</button></a>
@@ -109,7 +125,7 @@
         
     </div>
     <div class="w-[200px] h-auto absolute right-[8%]  top-[90%] text-right text-black text-base italic">
-        Lorem Ipsum
+        Blog
 
     </div>
     <div class=" bg-black w-[450px] h-[0.5px] absolute right-[8%]  top-[94%]  ">
