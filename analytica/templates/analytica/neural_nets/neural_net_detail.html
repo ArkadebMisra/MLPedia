@@ -34,11 +34,11 @@
                 </h1>
             </div>
         </div>
-        <h1 class="text-[#1e3164] text-[25px] font-medium h-10">Model Description: {{ nn_model.model_description |linebreaks }}</h1>
+        <h1 class="text-[#1e3164] text-[25px] font-medium max-h-32">Model Description: {{ nn_model.model_description |linebreaks }}</h1>
         <div class="h-auto w-full flex justify-center">
 
             {% if nn_model.plot %}
-            <img src="{{ nn_model.plot.url }}" class="bg-slate-200 drop-shadow-[-10px_10px_5px_rgba(0,0,0,0.25)] rounded-3xl mx-10 mt-20 mb-10 " >
+            <img src="{{ nn_model.plot.url }}" class="bg-slate-200 drop-shadow-[-10px_10px_5px_rgba(0,0,0,0.25)] rounded-3xl mx-10 mt-10 mb-10 " >
             {% endif %}
         </div>
         <h1 class="text-[#1e3164] text-[20px] font-medium h-10 mx-10">Accuracy: {{ nn_model.model_accuracy | floatformat:3 }}</h1>

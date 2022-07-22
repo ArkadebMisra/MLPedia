@@ -19,27 +19,27 @@
                 {{ form.title }}
             </p>
             
-            <p>
+            <p class=" absolute">
                 {{ form.model_description.errors }}
-                <p id="model_desc_view"></p>
+                <p id="model_desc_view" class="relative left-[35%]" ></p>
                 {{ form.model_description.label }}
-                {{ form.model_description }}<button type="button" onclick="remove_layer()" class="h-8 w-10  border border-white border-solid rounded-xl bg-[#1e3164] text-white text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none mb-4 ml-2">x</button>
+                {{ form.model_description }}<button type="button" onclick="remove_layer()" class="h-8 w-10   border-2 border-[#1e3164] border-solid rounded-xl bg-[#5a7ddb] text-black text-center text-sm font-semibold lg:text-base hover:bg-blue-900 hover:border-none mb-4 ml-2">x</button>
                 <div>
                     Add Linear Layer: 
                     <input type="number" id="layer_in" placeholder="number of inputs to the layer" >
                     <input type="number" id="layer_out" placeholder="number of outputs from the layer">
-                    <button type="button" onclick="add_linear_layer()" class="h-8 w-14  border border-white border-solid rounded-xl bg-[#1e3164] text-white text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none mb-4 ml-1">add</button>
+                    <button type="button" onclick="add_linear_layer()" class="h-8 w-14   border-2 border-[#1e3164] border-solid rounded-xl bg-[#5a7ddb] text-black font-semibold text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none mb-4 ml-1">add</button>
                 </div>
                 
         <div>
             Add Activation Layer: 
-            <button type="button" id="add_relu_btn" onclick="add_activation_layer('ReLU')" class="h-8 w-[18%]  border border-white border-solid rounded-xl bg-[#1e3164] text-white text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none mb-4 ml-2">ReLU</button>
-            <button type="button" id="add_tanh_btn" onclick="add_activation_layer('Tanh')" class="h-8 w-[18%]  border border-white border-solid rounded-xl bg-[#1e3164] text-white text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none mb-4 ml-2">Tanh</button>
+            <button type="button" id="add_relu_btn" onclick="add_activation_layer('ReLU')" class="h-8 w-[18%]   border-2 border-[#1e3164] border-solid rounded-xl bg-[#5a7ddb] text-black text-center text-sm font-semibold lg:text-base hover:bg-blue-900 hover:border-none mb-4 ml-2">ReLU</button>
+            <button type="button" id="add_tanh_btn" onclick="add_activation_layer('Tanh')" class="h-8 w-[18%]  border-2 border-[#1e3164] border-solid rounded-xl bg-[#5a7ddb] text-black text-center text-sm font-semibold lg:text-base hover:bg-blue-900 hover:border-none mb-4 ml-2">Tanh</button>
         </div>
         
         <div>
             Add Output Layer: 
-            <button type="button" id="add_out_layer_btn" onclick="add_output_layer('SoftMax')" class="h-8 w-[38%]  border border-white border-solid rounded-xl bg-[#1e3164] text-white text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none mb-4 ml-2">SoftMax</button>
+            <button type="button" id="add_out_layer_btn" onclick="add_output_layer('SoftMax')" class="h-8 w-[38%]   border-2 border-[#1e3164] border-solid rounded-xl bg-[#5a7ddb] text-black text-center text-sm font-semibold lg:text-base hover:bg-blue-900 hover:border-none mb-14 ml-2">SoftMax</button>
         </div>
         
     </p>
@@ -128,10 +128,10 @@
         e.classList.add("text-sm", "font-light", "text-[#1e3164]");
          
     }
-    title.classList.add("w-[44%]","h-8", "border-[#1e3164]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5","mb-4");
-    description.classList.add("w-[35%]","h-8", "border-[#1e3164]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5","mb-4");
+    title.classList.add("w-[44%]","h-8", "border-[#1e3164]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5","mb-14");
+    description.classList.add("w-[35%]","h-8", "border-[#1e3164]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5","mb-4","mt-4");
     
-    model_desc_view.classList.add("text-sm", "font-light", "text-[#1e3164]");
+    model_desc_view.classList.add("text-sm", "font-light", "text-[#1e3164]","overflow-auto","max-h-16","w-[37%]","bg-slate-100","rounded-md");
     l_in.classList.add("w-[17%]","h-8", "border-[#1e3164]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5","mb-4");
     l_out.classList.add("w-[18%]","h-8", "border-[#1e3164]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5","mb-4");
     features.classList.add("w-[41%]","h-8", "border-[#1e3164]", "border-solid", "border", "rounded-md", "drop-shadow-md","pl-2","hover:bg-[#abbef3]","hover:border-[#152347]","left-5","bg-white","mb-4");
