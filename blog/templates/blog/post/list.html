@@ -29,13 +29,14 @@
         <div class="relative top-10 inset-x-32  grid grid-cols-3 gap-7 gap-y-16 ">
             
             {% for post in posts %}
+            <a href="{{ post.get_absolute_url }}">
             <div class="bg-[#e6e9fa] text-center h-[530px] w-[380px] rounded-2xl drop-shadow-[10px_10px_10px_rgba(0,0,0,0.25)]">
                 <img class=" h-[51%] absolute rounded-t-2xl" src="{{ post.image.url }}" alt="">
                 <div class="h-[51%] w-auto rounded-t-2xl opacity-50 relative top-0 z-10 bg-gradient-to-t from-black to-slate-700"></div>
                 <div class=" text-[#070f3d] mx-4 mt-4 text-lg font-semibold">
-                    <a href="{{ post.get_absolute_url }}">
+                    
                         {{ post.title }}
-                    </a>
+                    
                 </div>
                 <div class="absolute">
                     <div class="mx-4 mt-2 font-light text-sm lg:text-lg text-black text-left">
@@ -47,7 +48,8 @@
                     </p>
                 </div>
             </div>
-                {% endfor %}
+            </a>
+            {% endfor %}
         </div>
     </div>
     <div class=" h-24 w-full relative bottom-0 bg-zinc-900 text-gray-500 text-center text-4xl font-semibold flex justify-center items-center ">

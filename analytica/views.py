@@ -100,7 +100,7 @@ def neural_net_models_list(request):
 
 @login_required
 def neural_net_detail(request, model_id, model):
-    prediction = None
+    prediction = [""]
     nn_model = get_object_or_404(NeuralNet,id = model_id, slug=model)
     try:
         if request.method == 'POST':
@@ -122,7 +122,7 @@ def neural_net_detail(request, model_id, model):
     return render(request,'analytica/neural_nets/neural_net_detail.html', 
                     {'nn_model': nn_model, 
                     'form': submitted_form, 
-                    'prediction': prediction})  
+                    'prediction': prediction[0]})  
 
 
 @login_required
@@ -206,7 +206,7 @@ def regression_models_list(request):
 
 @login_required
 def regression_detail(request, model_id, model):
-    prediction = None
+    prediction = [[""]]
     rg_model = get_object_or_404(Regression,id = model_id, slug=model)
     try:    
         if request.method == 'POST':
@@ -226,7 +226,7 @@ def regression_detail(request, model_id, model):
     return render(request,'analytica/regression/regression_detail.html', 
                     {'rg_model': rg_model, 
                     'form': submitted_form, 
-                    'prediction': prediction})
+                    'prediction': prediction[0][0]})
 
 @login_required
 def regression_delete(request,model_id,model):
@@ -306,7 +306,7 @@ def k_means_models_list(request):
 
 @login_required
 def k_means_detail(request, model_id, model):
-    prediction = None
+    prediction = ""
     km_model = get_object_or_404(KMeansCluster,id = model_id, slug=model)
     try:
         if request.method == 'POST':
@@ -413,7 +413,7 @@ def logistic_regression_models_list(request):
 
 @login_required
 def logistic_regression_detail(request, model_id, model):
-    prediction = None
+    prediction = [[""]]
     lr_model = get_object_or_404(LogisticRegression,id = model_id, slug=model)
     try:
         if request.method == 'POST':
@@ -434,7 +434,7 @@ def logistic_regression_detail(request, model_id, model):
                     "analytica/logistic_regression/logistic_regression_detail.html", 
                     {'lr_model': lr_model, 
                     'form': submitted_form, 
-                    'prediction': prediction})
+                    'prediction': prediction[0][0]})
 
 @login_required
 def logistic_regression_delete(request,model_id,model):
@@ -519,7 +519,7 @@ def perceptron_models_list(request):
 @login_required
 def perceptron_detail(request, model_id, model):
     pc_model = get_object_or_404(Perceptron,id = model_id, slug=model)
-    prediction = None
+    prediction = [[""]]
     try:
         if request.method == 'POST':
             submitted_form = PerceptronPredictionForm(request.POST)
@@ -539,7 +539,7 @@ def perceptron_detail(request, model_id, model):
                     "analytica/perceptron/perceptron_detail.html", 
                     {'pc_model': pc_model, 
                     'form': submitted_form, 
-                    'prediction': prediction})
+                    'prediction': prediction[0][0]})
 
 @login_required
 def perceptron_delete(request,model_id,model):
