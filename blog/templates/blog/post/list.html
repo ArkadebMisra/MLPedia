@@ -4,8 +4,8 @@
 <body class="bg-gray-200">
     
     <img class="h-[460px] w-auto absolute" src="{% static 'img/blogs.jpg' %}" alt="">
-    <div class="h-[460px] w-full opacity-50 relative top-0 z-10 bg-gradient-to-t from-black to-transparent"></div>
-    <div class=" bg-gray-200 h-[520px] w-5/12 absolute top-[180px] right-1/4 lg:right-0 z-10">
+    <div class="h-[460px] w-full opacity-30 relative top-0 z-10 bg-gradient-to-t from-black to-transparent"></div>
+    <div class=" bg-gray-200 h-[420px] w-5/12 absolute top-[180px] right-1/4 lg:right-0 z-10">
         <div class="h-5 w-1/12 lg:w-[400px] bg-[#478ac9] absolute top-[60px] right-1/2 lg:right-[200px] z-10"></div>
         <div class=" text-3xl lg:text-6xl font-bold absolute top-24 left-12">
             Blog
@@ -24,22 +24,35 @@
         </div>
         <div class="h-[1.5px] w-2/12  relative top-9 bg-black "></div>
     </div>
-    <div class=" h-auto w-full flex items-center">
+    <div class=" h-auto w-[85%] mb-24">
 
-        <div class=" grid grid-cols-3 relative top-14 gap-x-10 gap-y-24 ">
+        <div class="relative top-10 inset-x-32  grid grid-cols-3 gap-7 gap-y-16 ">
             
             {% for post in posts %}
-            <div class="bg-[#e6e9fa] text-center h-44 w-[300px] rounded-2xl drop-shadow-[10px_10px_10px_rgba(0,0,0,0.25)]">
-                <a href="{{ post.get_absolute_url }}">
-                    {{ post.title }}
-                </a>
-                <p class="date">
-                    Published {{ post.publish }} by {{ post.author }}
-                </p>
-                {{ post.body|truncatewords:30|linebreaks }}
-                {% endfor %}
+            <div class="bg-[#e6e9fa] text-center h-[530px] w-[380px] rounded-2xl drop-shadow-[10px_10px_10px_rgba(0,0,0,0.25)]">
+                <img class=" h-[51%] absolute rounded-t-2xl" src="{{ post.image.url }}" alt="">
+                <div class="h-[51%] w-auto rounded-t-2xl opacity-50 relative top-0 z-10 bg-gradient-to-t from-black to-slate-700"></div>
+                <div class=" text-[#070f3d] mx-4 mt-4 text-lg font-semibold">
+                    <a href="{{ post.get_absolute_url }}">
+                        {{ post.title }}
+                    </a>
+                </div>
+                <div class="absolute">
+                    <div class="mx-4 mt-2 font-light text-sm lg:text-lg text-black text-left">
+                        {{ post.body|truncatewords:15|linebreaks }}
+                    </div>
+                    <p class="date relative bottom-2 mt-10 mr-4 font-light text-xs text-right text-slate-700 ">
+                        Published {{ post.publish }} <br>
+                        by {{ post.author }}
+                    </p>
+                </div>
             </div>
+                {% endfor %}
         </div>
+    </div>
+    <div class=" h-24 w-full relative bottom-0 bg-zinc-900 text-gray-500 text-center text-4xl font-semibold flex justify-center items-center ">
+        <img class="h-12 w-auto" src="{% static 'img/logo_white.png' %}" alt="">
+    
     </div>
 </body>
 {% endblock %}

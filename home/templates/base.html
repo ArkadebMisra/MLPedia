@@ -132,9 +132,9 @@
                 {% for message in messages %}
                 <div class="h-auto w-full flex justify-center ">
 
-                    <li class="{{ message.tags }} h-36 w-[30%] bg-[#e9edf8e8] fixed top-[10%] rounded-md shadow-md text-center text-2xl flex justify-center items-center z-20">
+                    <li class="{{ message.tags }} h-36 w-[30%] bg-[#e9edf8e8] absolute top-[10%] rounded-md shadow-md text-center text-2xl flex justify-center items-center z-20">
                         {{ message|safe }}
-                        <a href="#" class="close fixed top-24 right-[37%]" onclick="removeMessage()">x</a>
+                        <a href="#" class="close ml-4" onclick="removeMessage()">x</a>
                     </li>
                 </div>
                 {% endfor %}

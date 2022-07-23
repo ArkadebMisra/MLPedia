@@ -1,6 +1,19 @@
-<h1>{{ post.title }}</h1>
-<p class="date">
+{% extends "base.html" %}
+
+{% load static %}
+{% block content %}
+<div class=" text-[#1e3164] text-[40px] text-center font-semibold mb-5 max-h-40 ml-10  mt-4" >
+    {{ post.title }}
+</div>
+<p class="date mr-16 mt-3 font-normal text-base text-right text-slate-700">
 Published {{ post.publish }} by {{ post.author }}
 </p>
-<img src="{{ post.image.url }}" alt="">
-{{ post.body|safe|linebreaks }}
+<div class=" h-full w-full flex justify-center items-center">
+
+    <img src="{{ post.image.url }}" alt="" class=" h-auto mt-6 ml-10 shadow-xl">
+</div>
+<div class="mx-10 mt-6 mb-4 font-normal lg:text-lg text-black text-left">
+
+    {{ post.body|safe|linebreaks }}
+</div>
+    {% endblock %}
