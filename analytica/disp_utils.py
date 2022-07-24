@@ -273,7 +273,7 @@ def plot_regression_model(X, y, rg):
     plt.switch_backend('AGG')
     plt.figure(facecolor="white")
     ax = plt.subplot()
-    ax.scatter(X, y, 1, c='#BDE7F5')
+    ax.scatter(X, y, 2, c='#F2668B')
     
     min_X = np.min(X)
     max_X = np.max(X)

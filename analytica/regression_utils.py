@@ -64,6 +64,7 @@ class RegressionModel:
         # th = np.random.normal(0, 1.0 * D ** (-.5), [D, 1])
         # th0 = np.zeros((1, 1))
         for it in range(iters):
+            # print(it)
             i = np.random.randint(N)
             Xt =  X[:, i:i+1]
             yt =  y[:, i:i+1]
@@ -71,6 +72,10 @@ class RegressionModel:
             th0_old = self.th0.copy()
             self.th = th_old - lrate*self.d_ridge_d_th(th_old, th0_old, Xt, yt, lam)
             self.th0 = th0_old - lrate*self.d_ridge_d_th0(th_old, th0_old, Xt, yt)
+            #trying to fix overflow(bad fix)
+            # self.th = np.around(self.th, decimals=2)
+            # self.th0 = np.around(self.th0, decimals=2)
+            # print(self.th, self.th0)
         #return th, th0
 
 
