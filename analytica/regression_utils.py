@@ -78,12 +78,41 @@ class RegressionModel:
             # print(self.th, self.th0)
         #return th, th0
 
+    #closed form formula for linear regression
+    #gradient descent producing overflow error
+    def closed_form_lin_reg(self, X, Y, iters=10000, lrate=0.005, lam=.1):
+        """
+        Computes the closed form solution of linear regression with L2 regularization
 
+        Args:
+            X - (n, d + 1) NumPy array (n datapoints each with d features plus the bias feature in the first dimension)
+            Y - (n, ) NumPy array containing the labels (a number from 0-9) for each
+                data point
+            lambda_factor - the regularization constant (scalar)
+        Returns:
+            theta - (d + 1, ) NumPy array containing the weights of linear regression. Note that theta[0]
+            represents the y-axis intercept of the model and therefore X[0] = 1
+        """
+        d, n = X.shape
+        X = np.vstack((X, np.ones(X.shape[1]))).T
+        Y=Y.T
+        I = np.identity(X.shape[1])
+        theta = np.linalg.inv(X.T @ X + lam * I) @ X.T @ Y
+        # print(theta.shape)
+        # print(theta)
+        self.th = theta[:d, :]
+        self.th0 = theta[d:, :]
+        # print(self.th.shape)
+        # print(self.th0.shape)
 
-    def run_regression(self, X, y, iters=10000, lrate=0.005, lam=0):
+    def run_regression(self, X, y, iters=10000, lrate=0.005, lam=.1):
         degree = self.degree
         X = self.x_transform(X, degree)
-        return self.lin_reg(X, y, iters, lrate, lam)
+        # gradient decent lin reg not working
+        # return self.lin_reg(X, y, iters, lrate, lam)
+        
+        # trying closed form
+        return self.closed_form_lin_reg(X, y, iters, lrate, lam)
 
     def predict(self, X):
         degree = self.degree

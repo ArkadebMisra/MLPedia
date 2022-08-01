@@ -48,7 +48,7 @@
             {{ form }}
             <input class="h-9 w-32 py-1 my-4 border border-white border-solid rounded-xl bg-[#1e3164] text-white text-center text-sm lg:text-base hover:bg-blue-900 hover:border-none " type="submit">
         </form>
-        <h1 class="text-[#1e3164] text-[25px] font-medium mx-10 h-10">The prediction:  {{ prediction }}</h1>
+        <h1 class="text-[#1e3164] text-[25px] font-medium mx-10 h-10">The prediction:  {{ prediction | floatformat:2 }}</h1>
         
         <h1 class="text-[#1e3164] text-[30px] font-medium mx-10 h-10">Delete this Model</h1>
         <div class="h-auto w-full flex justify-center">
