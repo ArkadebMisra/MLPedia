@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-aw97-ojf2!pwff29^%7fu&-r4eh=#rltgdgfjew%iw50hmn==x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ArkadebMisra.pythonanywhere.com'] #in local host just []
+ALLOWED_HOSTS = [] #['ArkadebMisra.pythonanywhere.com'] #in local host just []
 
 
 # Application definition
@@ -131,7 +131,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 #in  local host next line
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
 #in production python anywhere
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
