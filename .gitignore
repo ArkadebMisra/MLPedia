@@ -1,4 +1,9 @@
 __pycache__/
 /db.sqlite3
+db.sqlite3
 media/
-migrations/
+analytica/migrations/
+account/migrations/
+blog/migrations/
+home/migrations/
+plotter/migrations/
