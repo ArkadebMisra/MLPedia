@@ -7,3 +7,4 @@ account/migrations/
 blog/migrations/
 home/migrations/
 plotter/migrations/
+migrations/
