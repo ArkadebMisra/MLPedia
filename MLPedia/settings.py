@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-aw97-ojf2!pwff29^%7fu&-r4eh=#rltgdgfjew%iw50hmn==x
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [] #['ArkadebMisra.pythonanywhere.com'] #in local host just []
+ALLOWED_HOSTS = ['MLPedia.com', 'ArkadebMisra.pythonanywhere.com',] #in local host just []
 
 
 # Application definition
