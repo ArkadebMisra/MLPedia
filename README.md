@@ -31,6 +31,7 @@ I have to say even though I am quite happy with the project, it is very counter 
 
 ![1660361277740](https://github.com/user-attachments/assets/26de4821-0fad-4f4e-a4ba-0221a11a918b)
 ![1660361282179](https://github.com/user-attachments/assets/24f1db4d-7f95-4e5a-a7dc-c05bb654018e)
+![1660361280442](https://github.com/user-attachments/assets/af44d793-603b-4dee-a801-b049ceadfc49)
 ![1660361280455](https://github.com/user-attachments/assets/030aa4b2-1acf-47fa-9447-42c1b7f19420)
 ![1660361281144](https://github.com/user-attachments/assets/c06eaab7-318c-475b-8bfa-c4081818af7c)
 ![1660361279380](https://github.com/user-attachments/assets/d1cf61a7-6d4d-4cb0-815f-48ee57ac2f45)
